@@ -8,20 +8,23 @@
 //   window.devtools = devtools
 // }
 
-import '@/assets/css/main.css'
-import 'uno.css'
+import "@/assets/css/main.css";
+import "uno.css";
+import "mosha-vue-toastify/dist/style.css";
 
-import { createApp } from 'vue'
-import pinia from '@/plugins/pinia'
-import head from '@/plugins/head'
+import { createApp } from "vue";
+import pinia from "@/plugins/pinia";
+import head from "@/plugins/head";
+import vueQuery from "@/plugins/vueQuery";
 
-import App from '@/App.vue'
-import router from '@/router'
+import App from "@/App.vue";
+import router from "@/router";
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
-app.use(pinia)
-app.use(head)
+app.use(router);
+app.use(pinia);
+app.use(head);
+app.use(vueQuery);
 
-app.mount('#app')
+app.mount("#app");

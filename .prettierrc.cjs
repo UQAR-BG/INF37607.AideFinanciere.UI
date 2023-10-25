@@ -1,9 +1,9 @@
 module.exports = {
   vueIndentScriptAndStyle: true,
-  semi: false,
-  singleQuote: true,
+  semi: true,
+  singleQuote: false,
   bracketSpacing: true,
-  tabWidth: 2,
-  useTabs: false,
+  tabWidth: 1,
+  useTabs: true,
   trailingComma: 'all',
 }
