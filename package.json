@@ -20,12 +20,17 @@
     "format": "prettier --write . '!public'"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.11.8",
     "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.26",
+    "axios": "^1.5.1",
+    "mosha-vue-toastify": "^1.0.23",
     "pinia": "^2.0.35",
-    "vee-validate": "^4.11.6",
+    "vee-validate": "^4.11.8",
     "vue": "^3.3.0",
-    "vue-router": "^4.1.6"
+    "vue-query": "^1.26.0",
+    "vue-router": "^4.1.6",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.64",
