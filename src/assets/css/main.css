@@ -1,11 +1,87 @@
-/* Global styles */
-
-html {
-  /* Import fonts if required, and update the list accordingly */
-  font-family: 'Proza Libre', 'Inter var', 'Inter', 'Roboto', 'Helvetica Neue', sans-serif; 
-}
+/* RESET */
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE STYLES */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif; 
+  color: #292C33;
+  background-color: #EEEFF3;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.header {
+  background-color: #095797;
+  color: #fff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 100%;
+  padding: 15px 0;
+}
+
+.logo-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 65px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.logo {
+
+}
+
+header nav {
+  
+}
+
+.header-links {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-around;
+  row-gap: 6px;
+
+  margin-right: 70px;
+  list-style: none;
+}
+
+.header-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s;
+}
+
+.header-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 1);
 }

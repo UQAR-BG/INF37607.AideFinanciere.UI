@@ -1,7 +1,9 @@
 <template>
-  <header>
-    <MetaTags />
-  </header>
+  <AppHeader />
+  <AppNavBar />
+  
   <router-view />
+  
+  <AppLinks />
+  <AppFooter />
 </template>
-<style scoped></style>
