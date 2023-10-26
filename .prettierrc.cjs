@@ -6,4 +6,5 @@ module.exports = {
   tabWidth: 1,
   useTabs: true,
   trailingComma: 'none',
+  arrowParens: 'always'
 }
