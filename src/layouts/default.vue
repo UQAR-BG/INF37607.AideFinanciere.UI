@@ -3,7 +3,7 @@
   <AppNavBar />
   
   <router-view />
-  
-  <AppLinks />
+
+  <AppSocials />
   <AppFooter />
 </template>

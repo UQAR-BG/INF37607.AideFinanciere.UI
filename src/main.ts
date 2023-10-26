@@ -11,11 +11,14 @@
 import "@/assets/css/main.css";
 import "uno.css";
 import "mosha-vue-toastify/dist/style.css";
+import "@mdi/font/css/materialdesignicons.css";
+import "vuetify/styles";
 
 import { createApp } from "vue";
 import pinia from "@/plugins/pinia";
 import head from "@/plugins/head";
 import vueQuery from "@/plugins/vueQuery";
+import vuetify from "@/plugins/vuetify";
 
 import App from "@/App.vue";
 import router from "@/router";
@@ -26,5 +29,6 @@ app.use(router);
 app.use(pinia);
 app.use(head);
 app.use(vueQuery);
+app.use(vuetify);
 
 app.mount("#app");

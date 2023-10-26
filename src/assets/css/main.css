@@ -24,6 +24,10 @@ body {
   margin: 0 auto;
 }
 
+.small-label {
+  font-size: 12px;
+}
+
 /* KEYFRAMES */
 @keyframes fade-in {
   0% {
@@ -132,10 +136,23 @@ header nav {
 
 /* MAIN PAGE */
 .page {
-  height: 1000px;
+  height: 800px;
   padding: 20px 15px 35px 15px;
 }
 
 /* SOCIALS */
+.socials {
+  width: 100%;
+  background-color: #015480;
+}
+
+.socials-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+
+  color: rgba(255, 255, 255, 0.9);
+}
 
 /* FOOTER */
