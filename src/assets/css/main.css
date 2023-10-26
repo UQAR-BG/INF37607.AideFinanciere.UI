@@ -24,6 +24,19 @@ body {
   margin: 0 auto;
 }
 
+/* KEYFRAMES */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* HEADER */
 
 .header {
@@ -38,6 +51,8 @@ body {
   align-items: center;
 
   padding: 15px 0;
+
+  animation: fade-in 0.4s;
 }
 
 .logo-section {
@@ -114,3 +129,13 @@ header nav {
   cursor: pointer;
   background-color: #045280;
 }
+
+/* MAIN PAGE */
+.page {
+  height: 1000px;
+  padding: 20px 15px 35px 15px;
+}
+
+/* SOCIALS */
+
+/* FOOTER */
