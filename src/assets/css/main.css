@@ -14,9 +14,13 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+
   font-family: 'Roboto', 'Helvetica Neue', sans-serif; 
   color: #292C33;
   background-color: #EEEFF3;
+  height: 100vh;
 }
 
 .container {
@@ -70,14 +74,6 @@ body {
   font-size: 18px;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.95);
-}
-
-.logo {
-
-}
-
-header nav {
-  
 }
 
 .header-links {
@@ -136,7 +132,6 @@ header nav {
 
 /* MAIN PAGE */
 .page {
-  height: 800px;
   padding: 20px 15px 35px 15px;
 }
 
@@ -156,3 +151,39 @@ header nav {
 }
 
 /* FOOTER */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: auto;
+  padding: 20px 0 50px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 3px;
+
+  list-style: none;
+}
+
+.footer-link, .vertical-line, .footer-link > a, .copyright {
+  color: #00547F;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.vertical-line {
+  color: rgb(0,84,127, 0.5);
+}
+
+.footer-link:hover, .copyright:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+footer > img.logo {
+  max-width: 144px;
+}
