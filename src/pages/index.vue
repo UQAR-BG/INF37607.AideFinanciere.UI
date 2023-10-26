@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <main>
+  <main class="container">
     <span>A Fresh Start!</span>
   </main>
 </template>
