@@ -34,12 +34,9 @@
   import { toTypedSchema } from '@vee-validate/zod';
   import { useHead } from 'unhead'
   import { useField, useForm } from 'vee-validate';
-  import { useMutation, useQuery, useQueryClient } from 'vue-query';
-  import { getMeFn, loginUserFn } from '@/api/authApi';
-  import type { LoginInput } from '@/types/auth/login';
-  import { createToast } from 'mosha-vue-toastify';
-  import router from '@/router';
+  import { getMeFn } from '@/api/authApi';
   import { loginSchema } from '@/composables/schemas/loginSchema'
+  import { useLogin } from '@/composables/useLogin';
 
   definePage({
     name: 'home',
@@ -67,35 +64,10 @@
     retry: 1,
   });
 
-  const queryClient = useQueryClient();
-
-  const { mutate } = useMutation((credentials: LoginInput) => loginUserFn(credentials), {
-    onError: (error) => {
-      if (Array.isArray(error as any)) {
-        (error as any).forEach((el: any) =>
-          createToast(el.message, {
-            position: 'top-right',
-            type: 'warning',
-          })
-        );
-      } else {
-        createToast((error as any).message, {
-          position: 'top-right',
-          type: 'danger',
-        });
-      }
-    },
-    onSuccess: () => {
-      queryClient.refetchQueries('authUser');
-      createToast('Indentification réussie', {
-        position: 'top-right',
-      });
-      router.push({ name: 'dossier' });
-    },
-  });
+  const { mutationContext } = useLogin();
 
   const onSubmit = handleSubmit((values) => {
-    mutate({
+    mutationContext.mutate({
       codePermanent: values.codePermanent,
       password: values.password,
     });
