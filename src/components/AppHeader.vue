@@ -8,9 +8,9 @@
                 </section>
                 <nav>
                     <ul class="header-links">
-                        <li class="header-link">Accueil</li>
-                        <li class="header-link">Nous joindre</li>
-                        <li class="header-link">English</li>
+                        <RouterLink class="header-link" to="/">Accueil</RouterLink>
+                        <RouterLink class="header-link" to="/">Déconnexion</RouterLink>
+                        <RouterLink class="header-link" to="/inscription">Inscription</RouterLink>
                     </ul>
                 </nav>
             </div>
