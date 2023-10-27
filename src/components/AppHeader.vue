@@ -9,7 +9,7 @@
                 <nav>
                     <ul class="header-links">
                         <RouterLink class="header-link" to="/">Accueil</RouterLink>
-                        <RouterLink class="header-link" to="/">Déconnexion</RouterLink>
+                        <RouterLink class="header-link" to="/" v-if="isSignedIn">Déconnexion</RouterLink>
                         <RouterLink class="header-link" to="/inscription">Inscription</RouterLink>
                     </ul>
                 </nav>
@@ -18,8 +18,9 @@
     </header>
 </template>
 
-<script>
-    export default {
-        
-    }
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/authStore';
+
+const store = useAuthStore();
+const isSignedIn = store.isSignedIn;
 </script>

@@ -13,7 +13,10 @@ export const useAuthStore = defineStore({
 		({
 			authUser: null
 		} as AuthStoreState),
-	getters: {},
+	getters: {
+		isSignedIn: (state) => state.authUser !== null,
+		user: (state) => state.authUser
+	},
 	actions: {
 		setAuthUser(user: User | null) {
 			this.authUser = user;
