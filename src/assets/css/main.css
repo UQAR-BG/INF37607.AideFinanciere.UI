@@ -59,8 +59,6 @@ body {
   align-items: center;
 
   padding: 15px 0;
-
-  animation: fade-in 0.4s;
 }
 
 .logo-section {
@@ -147,6 +145,8 @@ h1.first-heading {
   font-style: normal;
   color: #223654;
   letter-spacing: 0;
+
+  animation: fade-in 0.4s;
 }
 
 h1.first-heading::after {
@@ -172,6 +172,8 @@ h2.second-heading {
   flex-direction: column;
 
   margin-bottom: 3rem;
+
+  animation: fade-in 0.4s 0.1s backwards;
 }
 
 .form {
@@ -198,7 +200,11 @@ h2.second-heading {
   padding: 0.375rem 0.75rem;
   margin: 0.5rem 0 0;
   line-height: 1.5;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .submit-btn {
@@ -211,6 +217,22 @@ h2.second-heading {
 
 .submit-btn:hover {
   background-color: #146bb2;
+}
+
+.form-span {
+  display: block;
+  text-align: end;
+}
+
+.form-link {
+  margin-left: 0.5rem;
+  font-weight: normal !important;
+  text-decoration: underline !important;
+}
+
+.error-label {
+  color: red;
+  font-weight: 500;
 }
 
 /* SOCIALS */
@@ -236,6 +258,8 @@ h2.second-heading {
 
   margin-top: auto;
   padding: 20px 0 50px;
+
+  animation: fade-in 0.4s 0.2s backwards;
 }
 
 .footer-links {
@@ -247,7 +271,7 @@ h2.second-heading {
   list-style: none;
 }
 
-.footer-link, .vertical-line, .footer-link > a, .copyright {
+.footer-link, .vertical-line, .footer-link > a, .copyright, .form-link {
   color: #00547F;
   text-decoration: none;
   font-weight: 400;

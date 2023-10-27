@@ -1,7 +1,7 @@
 /* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
 
 export type LoginInput = {
-	email: string;
+	codePermanent: string;
 	password: string;
 };
 
