@@ -20,4 +20,9 @@
   </main>
 </template>
 
+<route lang="yaml">
+  meta:
+    layout: main
+</route>
+
 <style scoped></style>

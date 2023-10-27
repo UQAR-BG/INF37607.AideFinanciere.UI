@@ -3,7 +3,6 @@
 
   definePage({
     name: 'aide-financiere',
-    // alias: ['home'],
     meta: {
       title: 'AideFinanciere',
       navOrder: 4,
@@ -20,5 +19,10 @@
     <span>Page pour l'aide financière</span>
   </main>
 </template>
+
+<route lang="yaml">
+  meta:
+    layout: main
+</route>
 
 <style scoped></style>
