@@ -34,9 +34,9 @@
   import { toTypedSchema } from '@vee-validate/zod';
   import { useHead } from 'unhead'
   import { useField, useForm } from 'vee-validate';
-  import { getMeFn } from '@/api/authApi';
-  import { loginSchema } from '@/composables/schemas/loginSchema'
+  import { loginSchema } from '@/schemas/loginSchema'
   import { useLogin } from '@/composables/useLogin';
+  import { useAuth } from '@/composables/useAuth';
 
   definePage({
     name: 'home',
@@ -59,12 +59,8 @@
   const { value: codePermanent } = useField('codePermanent');
   const { value: password } = useField('password');
 
-  const authResult = useQuery('authUser', () => getMeFn(), {
-    enabled: false,
-    retry: 1,
-  });
-
   const { mutationContext } = useLogin();
+  const { authUserQuery } = useAuth();
 
   const onSubmit = handleSubmit((values) => {
     mutationContext.mutate({
@@ -75,8 +71,8 @@
   });
 
   onBeforeUpdate(() => {
-    if (authResult.isSuccess.value) {
-      const authUser = Object.assign({}, authResult.data.value?.data.user);
+    if (authUserQuery.isSuccess.value) {
+      const authUser = Object.assign({}, authUserQuery.data.value?.data.user);
       authStore.setAuthUser(authUser);
     }
   });
