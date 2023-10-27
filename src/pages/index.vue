@@ -17,7 +17,7 @@
 
 <template>
   <main class="container page">
-    <span>A Fresh Start!</span>
+    <h1 class="main-title">Portail d’aide financière</h1>
   </main>
 </template>
 

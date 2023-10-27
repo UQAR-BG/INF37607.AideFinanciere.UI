@@ -29,7 +29,7 @@ body {
 }
 
 .small-label {
-  font-size: 12px;
+  font-size: 0.8em;
 }
 
 /* KEYFRAMES */
@@ -71,9 +71,11 @@ body {
 }
 
 .title {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  letter-spacing: 0.5px;
 }
 
 .header-links {
@@ -89,7 +91,7 @@ body {
 }
 
 .header-link {
-  font-size: 14px;
+  font-size: 0.850rem;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
   transition: all 0.2s;
@@ -118,6 +120,7 @@ body {
 .navlink {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
+  font-size: 1em;
   border-width: 0 1px 0 1px;
   border-style: none solid none solid;
   border-color: rgba(255, 255, 255, 0.9);
@@ -133,6 +136,25 @@ body {
 /* MAIN PAGE */
 .page {
   padding: 20px 15px 35px 15px;
+}
+
+h1.main-title {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: bold;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-style: normal;
+  color: #223654;
+  letter-spacing: 0;
+}
+
+h1.main-title::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  padding-top: 0.5rem;
+  border-bottom: 5px solid #f09686;
 }
 
 /* SOCIALS */
