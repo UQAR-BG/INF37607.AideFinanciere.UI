@@ -23,5 +23,8 @@
     "types": ["vite-plugin-vue-layouts/client"],
     "allowJs": true,
     "strict": false
-  }
+  },
+  "filesGlob": [
+    "**/*.ts"
+  ],
 }

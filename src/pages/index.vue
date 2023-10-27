@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-  import * as zod from 'zod';
   import { toTypedSchema } from '@vee-validate/zod';
   import { useHead } from 'unhead'
   import { useField, useForm } from 'vee-validate';
@@ -40,6 +39,7 @@
   import type { LoginInput } from '@/types/auth/login';
   import { createToast } from 'mosha-vue-toastify';
   import router from '@/router';
+  import { loginSchema } from '@/composables/schemas/loginSchema'
 
   definePage({
     name: 'home',
@@ -55,20 +55,8 @@
 
   const authStore = useAuthStore();
 
-  const loginSchema = toTypedSchema(
-    zod.object({
-      codePermanent: zod
-        .string({ required_error: "Le code permanent est requis" })
-        .min(1, 'Le code permanent est requis'),
-      password: zod
-        .string({ required_error: "Le mot de passe est requis" })
-        .min(1, 'Le mot de passe est requis')
-        .min(8, 'Le mot de passe doit faire au moins 8 caractères')
-    })
-  );
-
   const { handleSubmit, errors, resetForm } = useForm({
-    validationSchema: loginSchema
+    validationSchema: toTypedSchema(loginSchema)
   });
 
   const { value: codePermanent } = useField('codePermanent');
@@ -81,9 +69,7 @@
 
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation(
-  (credentials: LoginInput) => loginUserFn(credentials),
-  {
+  const { mutate } = useMutation((credentials: LoginInput) => loginUserFn(credentials), {
     onError: (error) => {
       if (Array.isArray(error as any)) {
         (error as any).forEach((el: any) =>
@@ -106,8 +92,7 @@
       });
       router.push({ name: 'dossier' });
     },
-  }
-);
+  });
 
   const onSubmit = handleSubmit((values) => {
     mutate({
@@ -118,11 +103,11 @@
   });
 
   onBeforeUpdate(() => {
-  if (authResult.isSuccess.value) {
-    const authUser = Object.assign({}, authResult.data.value?.data.user);
-    authStore.setAuthUser(authUser);
-  }
-});
+    if (authResult.isSuccess.value) {
+      const authUser = Object.assign({}, authResult.data.value?.data.user);
+      authStore.setAuthUser(authUser);
+    }
+  });
 </script>
 
 <style scoped></style>
