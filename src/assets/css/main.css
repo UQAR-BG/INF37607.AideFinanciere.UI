@@ -166,6 +166,15 @@ h2.second-heading {
   font-weight: 400;
 }
 
+.main-section {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 3rem;
+
+  animation: fade-in 0.4s 0.1s backwards;
+}
+
 /* FORMS */
 .form-section {
   display: flex;
@@ -217,6 +226,19 @@ h2.second-heading {
 
 .submit-btn:hover {
   background-color: #146bb2;
+}
+
+.cancel-btn {
+  color: rgba(0, 0, 0, 0.9) !important;
+  border: solid 1px #898991;
+  padding: 0.375rem 0.75rem;
+  margin-right: 1rem;
+  background-color: #cbd1d6;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #909396;
 }
 
 .form-span {
