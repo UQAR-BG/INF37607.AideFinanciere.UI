@@ -1,8 +1,8 @@
 /* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
 
 export type SignUpInput = {
-	name: string;
-	email: string;
+	assuranceSociale: string;
+	birthdate: Date;
 	password: string;
 	passwordConfirm: string;
 };
