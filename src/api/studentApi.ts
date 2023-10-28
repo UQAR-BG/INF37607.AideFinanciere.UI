@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import type { StudentInfoInput, StudentInfoResponse } from "@/types/student";
+import type { Student, StudentResponse } from "@/types/student";
 
 const BASE_URL = "http://localhost:8000/api/";
 
@@ -11,8 +11,8 @@ const studentApi = axios.create({
 
 studentApi.defaults.headers.common["Content-Type"] = "application/json";
 
-export const getStudentInfo = async (): Promise<StudentInfoInput> => {
-	// const response = await studentApi.get<StudentInfoInput>("student");
+export const getStudentInfo = async (): Promise<Student> => {
+	// const response = await studentApi.get<Student>("student");
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -25,9 +25,9 @@ export const getStudentInfo = async (): Promise<StudentInfoInput> => {
 };
 
 export const updateStudentInfo = async (
-	studentInfo: StudentInfoInput
-): Promise<StudentInfoResponse> => {
-	const response = await studentApi.patch<StudentInfoResponse>(
+	studentInfo: Student
+): Promise<StudentResponse> => {
+	const response = await studentApi.patch<StudentResponse>(
 		"student",
 		studentInfo
 	);

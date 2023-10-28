@@ -1,5 +1,5 @@
 import { getStudentInfo, updateStudentInfo } from "@/api/studentApi";
-import type { StudentInfoInput } from "@/types/student";
+import type { Student } from "@/types/student";
 import { createToast } from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "vue-query";
 
@@ -12,7 +12,7 @@ export const useStudent = () => {
 	});
 
 	const studentInfoMutation = useMutation(
-		(studentInfo: StudentInfoInput) => updateStudentInfo(studentInfo),
+		(studentInfo: Student) => updateStudentInfo(studentInfo),
 		{
 			onError: (error) => {
 				if (Array.isArray(error as any)) {
