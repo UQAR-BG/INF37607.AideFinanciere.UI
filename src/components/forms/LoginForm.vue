@@ -26,7 +26,6 @@
   import { loginSchema } from '@/schemas/loginSchema'
   import { useLogin } from '@/composables/useLogin';
   import { useAuth } from '@/composables/useAuth';
-import type InputGroupVue from '../inputs/InputGroup.vue';
 
   const authStore = useAuthStore();
 
