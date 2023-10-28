@@ -2,7 +2,7 @@
 
 export type SignUpInput = {
 	assuranceSociale: string;
-	birthdate: string;
+	birthdate: Date;
 	password: string;
 	passwordConfirm: string;
 };

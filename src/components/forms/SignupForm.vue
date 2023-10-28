@@ -9,7 +9,7 @@
 				:errorMessage="errors.assuranceSociale"
 			/>
 			<InputGroup
-				type="datetime-local"
+				type="date"
 				label="Date de naissance"
 				id="birthdate"
 				:errorMessage="errors.birthdate"
