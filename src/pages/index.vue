@@ -5,39 +5,13 @@
     <section class="form-section">
       <h2 class="second-heading">Identification</h2>
 
-      <form class="form" @submit.prevent="onSubmit">
-        <div class="input-group">
-          <label class="input-label" for="codePermanent">Code Permanent</label>
-          <input class="input" id="codePermanent" type="text" placeholder="AAAA11223344" v-model.trim="codePermanent" />
-          <span class="small-label error-label">{{
-            errors.codePermanent
-          }}</span>
-        </div>
-        <div class="input-group">
-          <label class="input-label" for="password">Mot de passe</label>
-          <input class="input" id="password" type="password" v-model.trim="password" />
-          <span class="small-label error-label">{{
-            errors.password
-          }}</span>
-        </div>
-        <button class="submit-btn" type="submit">Soumettre</button>
-        <span class="small-label form-span">Besoin d'un compte ?<router-link to="/inscription" class="small-label form-link"
-            >Aller à l'inscription</router-link
-          ></span>
-      </form>
+      <LoginForm />
     </section>
     
   </main>
 </template>
 
 <script setup lang="ts">
-  import { toTypedSchema } from '@vee-validate/zod';
-  import { useHead } from 'unhead'
-  import { useField, useForm } from 'vee-validate';
-  import { loginSchema } from '@/schemas/loginSchema'
-  import { useLogin } from '@/composables/useLogin';
-  import { useAuth } from '@/composables/useAuth';
-
   definePage({
     name: 'home',
     meta: {
@@ -49,33 +23,4 @@
   useHead({
     title: 'Aide financière aux études ',
   })
-
-  const authStore = useAuthStore();
-
-  const { handleSubmit, errors, resetForm } = useForm({
-    validationSchema: toTypedSchema(loginSchema)
-  });
-
-  const { value: codePermanent } = useField('codePermanent');
-  const { value: password } = useField('password');
-
-  const { mutationContext } = useLogin();
-  const { authUserQuery } = useAuth();
-
-  const onSubmit = handleSubmit((values) => {
-    mutationContext.mutate({
-      codePermanent: values.codePermanent,
-      password: values.password,
-    });
-    resetForm();
-  });
-
-  onBeforeUpdate(() => {
-    if (authUserQuery.isSuccess.value) {
-      const authUser = Object.assign({}, authUserQuery.data.value?.data.user);
-      authStore.setAuthUser(authUser);
-    }
-  });
 </script>
-
-<style scoped></style>

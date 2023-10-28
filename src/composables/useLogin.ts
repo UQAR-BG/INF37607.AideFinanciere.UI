@@ -7,7 +7,7 @@ import { useMutation, useQueryClient } from "vue-query";
 export const useLogin = () => {
 	const queryClient = useQueryClient();
 
-	const mutationContext = useMutation(
+	const loginMutation = useMutation(
 		(credentials: LoginInput) => loginUserFn(credentials),
 		{
 			onError: (error) => {
@@ -36,6 +36,6 @@ export const useLogin = () => {
 	);
 
 	return {
-		mutationContext
+		loginMutation
 	};
 };
