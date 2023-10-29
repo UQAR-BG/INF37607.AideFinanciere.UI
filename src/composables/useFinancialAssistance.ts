@@ -1,4 +1,5 @@
 import { getAllFinancialAids } from "@/api/financialAssistanceApi";
+import { defaultValues, type FinancialAidFilters } from "@/types/filters";
 import { FinancialAidType, type FinancialAid } from "@/types/financialAid";
 import { useQuery } from "vue-query";
 
@@ -11,6 +12,16 @@ export const useFinancialAssistance = (codePermanent: string) => {
 			retry: 3
 		}
 	);
+
+	const filterFinancialAids = (filters: FinancialAidFilters) => {
+		const allTypes: boolean = filters.type === 0;
+
+		return allFinancialAidsQuery.data?.value?.filter(
+			(a) =>
+				(allTypes ? true : a.type === filters.type) &&
+				a.date.getFullYear() === filters.year
+		);
+	};
 
 	const grants = computed<FinancialAid[]>(() =>
 		allFinancialAidsQuery.data?.value?.filter(
@@ -32,11 +43,15 @@ export const useFinancialAssistance = (codePermanent: string) => {
 		loans.value?.reduce((a, c) => a + c.amount, 0)
 	);
 
+	const filterValues = reactive(defaultValues);
+
 	return {
 		allFinancialAidsQuery,
+		filterFinancialAids,
 		grants,
 		loans,
 		grantSum,
-		loanSum
+		loanSum,
+		filterValues
 	};
 };

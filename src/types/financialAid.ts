@@ -1,8 +1,15 @@
 import type { Student } from "./student";
 
 export enum FinancialAidType {
-	Loan,
+	Loan = 1,
 	Grant
+}
+
+export enum FinancialAidClaimStatus {
+	Pending,
+	Completed,
+	Rejected,
+	Cancelled
 }
 
 export type FinancialAidClaim = {
@@ -28,6 +35,7 @@ export type FinancialAidClaim = {
 	lastYearMainIncome?: number;
 	lastYearOtherIncome?: number;
 	currentYearPotentialIncome?: number;
+	status?: FinancialAidClaimStatus;
 };
 
 export type FinancialAid = {
