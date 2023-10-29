@@ -1,21 +1,24 @@
 <template>
-	<main class="container page">
-		<h1 class="first-heading">Dossier de l'étudiant</h1>
+	<section class="main-section">
+		<h2 class="second-heading">Montants versés</h2>
 
-		<section class="main-section">
-			<h2 class="second-heading">Montants versés</h2>
-
-			<FinancialAidFilter @filtersChanged="filtersChanged" />
-			<div class="montant-card" v-for="montant in filteredFinancialAids">
-				{{ montant.amount }}
-			</div>
-		</section>
-	</main>
+		<FinancialAidFilter @filtersChanged="filtersChanged" />
+		<TransitionGroup class="card-list" name="card-list" tag="div">
+			<FinancialAidDetails
+				v-for="montant in filteredFinancialAids"
+				:montant="montant"
+				:key="montant.id"
+			/>
+		</TransitionGroup>
+		<FadeTransition>
+			<p v-if="isEmpty">Aucun montant trouvé...</p>
+		</FadeTransition>
+	</section>
 </template>
 
 <route lang="yaml">
 meta:
- layout: main
+ layout: studentProfile
 </route>
 
 <script setup lang="ts">
@@ -40,6 +43,10 @@ meta:
 
 	const filteredFinancialAids = computed<FinancialAid[]>(() =>
 		filterFinancialAids(filterValues)
+	);
+
+	const isEmpty = computed<boolean>(
+		() => filteredFinancialAids.value?.length === 0
 	);
 
 	const filtersChanged = (values: FinancialAidFilters) => {

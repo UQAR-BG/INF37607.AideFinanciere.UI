@@ -3,11 +3,12 @@ import { defaultValues, type FinancialAidFilters } from "@/types/filters";
 import { FinancialAidType, type FinancialAid } from "@/types/financialAid";
 import { useQuery } from "vue-query";
 
-export const useFinancialAssistance = (codePermanent: string) => {
+export const useFinancialAssistance = (codePermanent?: string) => {
 	const allFinancialAidsQuery = useQuery(
 		["financialAids", codePermanent],
 		() => getAllFinancialAids(codePermanent),
 		{
+			enabled: codePermanent !== null,
 			staleTime: 1000 * 60 * 5,
 			retry: 3
 		}
@@ -45,6 +46,10 @@ export const useFinancialAssistance = (codePermanent: string) => {
 
 	const filterValues = reactive(defaultValues);
 
+	const formatType = (type: FinancialAidType) => {
+		return type === FinancialAidType.Grant ? "Bourse" : "Prêt";
+	};
+
 	return {
 		allFinancialAidsQuery,
 		filterFinancialAids,
@@ -52,6 +57,7 @@ export const useFinancialAssistance = (codePermanent: string) => {
 		loans,
 		grantSum,
 		loanSum,
-		filterValues
+		filterValues,
+		formatType
 	};
 };

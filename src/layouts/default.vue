@@ -1,9 +1,13 @@
 <template>
-  <AppHeader />
-  <AppNavBar />
-  
-  <router-view />
+	<AppHeader />
+	<AppNavBar />
 
-  <AppSocials />
-  <AppFooter />
+	<router-view v-slot="{ Component }">
+		<FadeTransition>
+			<component :is="Component" />
+		</FadeTransition>
+	</router-view>
+
+	<AppSocials />
+	<AppFooter />
 </template>

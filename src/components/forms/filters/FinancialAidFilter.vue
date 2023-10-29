@@ -1,27 +1,31 @@
 <template>
 	<form class="filter-form" @submit.prevent="">
-		<select
-			class="filter"
-			name="year"
-			id="year"
-			@change="onSelectChange"
-			v-model="year"
+		<label class="select">
+			<select
+				class="filter"
+				name="year"
+				id="year"
+				@change="onSelectChange"
+				v-model="year"
+			>
+				<option v-for="year in FinancialAidClaimYearFilter" :value="year">
+					{{ year }}
+				</option>
+			</select></label
 		>
-			<option v-for="year in yearFilterValues" :value="year">
-				{{ year }}
-			</option>
-		</select>
-		<select
-			class="filter"
-			name="type"
-			id="type"
-			@change="onSelectChange"
-			v-model="type"
-		>
-			<option v-for="(type, index) in typeFilterValues" :value="index">
-				{{ type }}
-			</option>
-		</select>
+		<label class="select">
+			<select
+				class="filter"
+				name="type"
+				id="type"
+				@change="onSelectChange"
+				v-model="type"
+			>
+				<option v-for="(type, index) in FinancialAidTypeFilter" :value="index">
+					{{ type }}
+				</option>
+			</select>
+		</label>
 	</form>
 </template>
 
@@ -35,9 +39,6 @@
 	import { useField, useForm } from "vee-validate";
 
 	const emit = defineEmits(["filtersChanged"]);
-
-	const yearFilterValues = FinancialAidClaimYearFilter;
-	const typeFilterValues = FinancialAidTypeFilter;
 
 	const { values } = useForm<FinancialAidFilters>({
 		initialValues: defaultValues

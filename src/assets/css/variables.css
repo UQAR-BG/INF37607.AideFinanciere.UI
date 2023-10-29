@@ -27,4 +27,6 @@
     --cancel-btn-border-color: 137,137,145;
     --cancel-btn-bg-color: 203,209,214;
     --cancel-btn-bg-hover-color: 144,147,150;
+
+    --background-select: linear-gradient(to left, #dce3e9 3rem, rgb(238,239,243) 3rem);
   }
