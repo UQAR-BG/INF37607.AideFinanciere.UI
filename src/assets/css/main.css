@@ -196,6 +196,17 @@ h2.second-heading {
   margin-bottom: 1.5rem;
 }
 
+.data-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+}
+
+.data {
+  font-weight: bold;
+}
+
 .input-label {
 
 }
