@@ -2,11 +2,16 @@
 	<AppHeader />
 	<AppNavBar />
 
-	<router-view v-slot="{ Component }">
+	<main class="container page">
 		<FadeTransition>
-			<component :is="Component" />
+			<router-view />
 		</FadeTransition>
-	</router-view>
+		<!-- <router-view v-slot="{ Component }">
+			<FadeTransition>
+				<component :is="Component" />
+			</FadeTransition>
+		</router-view> -->
+	</main>
 
 	<AppSocials />
 	<AppFooter />

@@ -1,6 +1,6 @@
 <template>
 	<section class="main-section">
-		<h2 class="second-heading">Calcul de l'aide financière</h2>
+		<h1 class="first-heading" v-once>Calcul de l'aide financière</h1>
 
 		<DataGroup
 			label="Total des prêts versés"

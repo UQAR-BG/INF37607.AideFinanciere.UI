@@ -1,6 +1,6 @@
 <template>
 	<section class="main-section">
-		<h2 class="second-heading">Renseignements personnels</h2>
+		<h1 class="first-heading" v-once>Renseignements personnels</h1>
 
 		<StudentInfo />
 	</section>

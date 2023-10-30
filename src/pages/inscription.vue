@@ -1,27 +1,23 @@
 <template>
-  <main class="container page">
-    <h1 class="first-heading">Aide financière aux études</h1>
+	<section class="form-section">
+		<h1 class="first-heading" v-once>Inscription</h1>
 
-    <section class="form-section">
-      <h2 class="second-heading">Inscription</h2>
-
-      <SignupForm />
-    </section>
-  </main>
+		<SignupForm />
+	</section>
 </template>
 
 <script setup lang="ts">
-  definePage({
-    name: 'inscription',
-    meta: {
-      title: 'Inscription',
-      navOrder: 2,
-    },
-  })
+	definePage({
+		name: "inscription",
+		meta: {
+			title: "Inscription",
+			navOrder: 2
+		}
+	});
 
-  useHead({
-    title: 'Inscription',
-  })
+	useHead({
+		title: "Inscription"
+	});
 </script>
 
 <style scoped></style>

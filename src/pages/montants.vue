@@ -1,6 +1,6 @@
 <template>
 	<section class="main-section">
-		<h2 class="second-heading">Montants versés</h2>
+		<h1 class="first-heading" v-once>Montants versés</h1>
 
 		<FinancialAidFilter @filtersChanged="filtersChanged" />
 		<TransitionGroup class="card-list" name="card-list" tag="div">
