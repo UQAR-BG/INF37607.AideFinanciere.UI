@@ -1,5 +1,7 @@
 export type Student = {
 	codePermanent?: string;
+	firstname?: string;
+	lastname?: string;
 	nas?: string;
 	created_at?: string;
 	updated_at?: string;

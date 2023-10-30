@@ -224,7 +224,22 @@ h2.second-heading {
   animation: fade-in 0.4s 0.1s backwards;
 }
 
-.form {
+.inline {
+  display: flex;
+  align-content: start;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+.inline > * {
+  flex: 0.5;
+}
+
+.full {
+  width: 100%;
+}
+
+.half {
   width: 50%;
 }
 

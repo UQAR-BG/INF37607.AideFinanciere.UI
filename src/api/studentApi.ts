@@ -17,6 +17,11 @@ export const getStudentInfo = async (): Promise<Student> => {
 
 	return new Promise((resolve) => {
 		resolve({
+			codePermanent: "TEST012345",
+			nas: "123 456 789",
+			birthdate: new Date().toLocaleDateString(),
+			firstname: "John",
+			lastname: "Doe",
 			address: "809 Rue du Pont",
 			phoneNumber: "418-906-8555",
 			email: "test@gmail.com"

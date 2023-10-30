@@ -1,5 +1,5 @@
 <template>
-	<form class="form" @submit.prevent="onSubmit">
+	<form class="form half" @submit.prevent="onSubmit">
 		<InputGroup
 			type="text"
 			label="Code Permanent"

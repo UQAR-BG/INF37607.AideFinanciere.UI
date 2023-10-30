@@ -1,6 +1,8 @@
 import * as zod from "zod";
 
 export const studentInfoSchema = zod.object({
+	firstname: zod.string().optional(),
+	lastname: zod.string().optional(),
 	address: zod.string().optional(),
 	email: zod
 		.string()

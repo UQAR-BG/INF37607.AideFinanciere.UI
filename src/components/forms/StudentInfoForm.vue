@@ -1,26 +1,65 @@
 <template>
-	<form class="form" @submit.prevent="onSubmit">
-		<InputGroup
-			type="text"
-			label="Adresse de correspondance"
-			id="address"
-			:errorMessage="errors.address"
-			:disabled="disabled"
+	<section>
+		<DataGroup
+			label="Code permanent"
+			id="codePermanent"
+			:data="studentInfo?.codePermanent"
 		/>
-		<InputGroup
-			type="text"
-			label="Numéro de téléphone"
-			id="phoneNumber"
-			:errorMessage="errors.phoneNumber"
-			:disabled="disabled"
-		/>
-		<InputGroup
-			type="text"
-			label="Adresse de courriel"
-			id="email"
-			:errorMessage="errors.email"
-			:disabled="disabled"
-		/>
+		<Block class="full inline">
+			<DataGroup
+				label="Numéro d'assurance sociale"
+				id="nas"
+				:data="studentInfo?.nas"
+			/>
+			<DataGroup
+				label="Date de naissance"
+				id="birthdate"
+				:data="studentInfo?.birthdate"
+			/>
+		</Block>
+	</section>
+	<form class="form full" @submit.prevent="onSubmit">
+		<Block class="full inline">
+			<InputGroup
+				type="text"
+				label="Prénom"
+				id="firstname"
+				:errorMessage="errors.firstname"
+				:disabled="disabled"
+			/>
+			<InputGroup
+				type="text"
+				label="Nom"
+				id="lastname"
+				:errorMessage="errors.lastname"
+				:disabled="disabled"
+			/>
+		</Block>
+		<Block class="full inline">
+			<InputGroup
+				type="text"
+				label="Numéro de téléphone"
+				id="phoneNumber"
+				:errorMessage="errors.phoneNumber"
+				:disabled="disabled"
+			/>
+			<InputGroup
+				type="text"
+				label="Adresse de courriel"
+				id="email"
+				:errorMessage="errors.email"
+				:disabled="disabled"
+			/>
+		</Block>
+		<Block class="full">
+			<InputGroup
+				type="text"
+				label="Adresse de correspondance"
+				id="address"
+				:errorMessage="errors.address"
+				:disabled="disabled"
+			/>
+		</Block>
 		<button
 			class="submit-btn"
 			type="button"
@@ -54,6 +93,7 @@
 	const emit = defineEmits(["toggleMode"]);
 
 	const { studentInfoQuery, studentInfoMutation } = useStudent();
+	const studentInfo = computed(() => studentInfoQuery.data?.value);
 
 	const { handleSubmit, errors, resetForm } = useForm({
 		validationSchema: toTypedSchema(studentInfoSchema),
@@ -62,6 +102,8 @@
 
 	const onSubmit = handleSubmit((values) => {
 		studentInfoMutation.mutate({
+			firstname: values.firstname,
+			lastname: values.lastname,
 			address: values.address,
 			phoneNumber: values.phoneNumber,
 			email: values.email
