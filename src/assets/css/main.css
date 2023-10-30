@@ -138,9 +138,13 @@ body {
   transition: all 0.2s;
 }
 
-.navlink:hover {
+.navlink:hover, .navlink.active:hover {
   cursor: pointer;
   background-color: rgb(var(--navlink-bg-hover-color));
+}
+
+.navlink.active {
+  background-color: rgb(var(--navlink-bg-active-color));
 }
 
 /* MAIN PAGE */

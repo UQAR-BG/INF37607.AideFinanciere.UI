@@ -23,6 +23,7 @@ meta:
 <script setup lang="ts">
 	import { useCurrency } from "@/composables/useCurrency";
 	import { useFinancialAssistance } from "@/composables/useFinancialAssistance";
+	import { PageName } from "@/types/pages";
 	import { useHead } from "unhead";
 
 	definePage({
@@ -36,6 +37,8 @@ meta:
 	useHead({
 		title: "Calcul de l'aide financière"
 	});
+
+	provide("activePage", PageName.AideFinanciere);
 
 	const { loanSum, grantSum } = useFinancialAssistance("TEST012345");
 
