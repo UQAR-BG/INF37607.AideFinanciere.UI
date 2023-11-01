@@ -16,6 +16,8 @@ export type Student = {
 export type SignupStudentInfo = {
 	nas?: string;
 	birthdate?: Date;
+	password?: string;
+	passwordConfirm?: string;
 };
 
 export type StudentResponse = {

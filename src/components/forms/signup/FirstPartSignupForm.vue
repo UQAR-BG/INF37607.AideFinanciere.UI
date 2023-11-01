@@ -38,12 +38,10 @@
 
 	const emit = defineEmits(["firstPartValidated"]);
 
-	const { mutate, isSuccess, isError, data, error } =
+	const { mutate, isSuccess, isError, error } =
 		useStudent().validateStudentInfoMutation;
 
 	const onSubmit = handleSubmit((values) => {
-		console.log(`onSubmit: ${JSON.stringify(values)}`);
-
 		mutate({
 			nas: values.nas,
 			birthdate: values.birthdate
@@ -51,18 +49,12 @@
 	});
 
 	watch(isSuccess, () => {
-		console.log(`isSuccess: ${isSuccess.value}`);
-		console.log(`validation data: ${JSON.stringify(data.value)}`);
-
 		if (isSuccess.value) {
-			console.log(`formValues: ${JSON.stringify(values)}`);
 			emit("firstPartValidated", values);
 		}
 	});
 
 	watch(isError, () => {
-		console.log(error);
-
 		errors.value.birthdate = error?.value as string;
 	});
 </script>
