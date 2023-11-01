@@ -3,7 +3,11 @@ import {
 	updateStudentInfo,
 	validateStudentInfo
 } from "@/api/studentApi";
-import type { Student, StudentInfoValidateResponse } from "@/types/student";
+import type {
+	SignupStudentInfo,
+	Student,
+	StudentInfoValidateResponse
+} from "@/types/student";
 import { createToast } from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "vue-query";
 
@@ -20,11 +24,13 @@ export const useStudent = () => {
 	);
 
 	const validateStudentInfoMutation = useMutation(
-		(studentInfo: { nas: string; birthdate: Date }) =>
-			validateStudentInfo(studentInfo),
+		(studentInfo: SignupStudentInfo) => validateStudentInfo(studentInfo),
 		{
 			onError: (error) => {
 				console.log(error);
+			},
+			onSuccess: (data: StudentInfoValidateResponse) => {
+				console.log(data);
 			}
 		}
 	);

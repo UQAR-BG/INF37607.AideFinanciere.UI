@@ -13,6 +13,11 @@ export type Student = {
 	birthdate?: string;
 };
 
+export type SignupStudentInfo = {
+	nas?: string;
+	birthdate?: Date;
+};
+
 export type StudentResponse = {
 	status: string;
 	data: {

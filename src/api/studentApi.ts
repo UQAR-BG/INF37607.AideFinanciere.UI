@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import type {
+	SignupStudentInfo,
 	Student,
 	StudentInfoValidateResponse,
 	StudentResponse
@@ -43,11 +44,10 @@ export const updateStudentInfo = async (
 	return response.data;
 };
 
-export const validateStudentInfo = async (studentInfo: {
-	nas: string;
-	birthdate: Date;
-}): Promise<StudentInfoValidateResponse> => {
-	return new Promise((resolve, reject) => {
+export const validateStudentInfo = async (
+	studentInfo: SignupStudentInfo
+): Promise<StudentInfoValidateResponse> => {
+	return new Promise((resolve) => {
 		resolve({
 			status: "success",
 			message: "",

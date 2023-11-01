@@ -4,9 +4,9 @@
 			<InputGroup
 				type="text"
 				label="Numéro d’assurance sociale"
-				id="assuranceSociale"
+				id="nas"
 				placeholder="012 345 678"
-				:errorMessage="errors.assuranceSociale"
+				:errorMessage="errors.nas"
 			/>
 			<InputGroup
 				type="date"
@@ -38,24 +38,31 @@
 
 	const emit = defineEmits(["firstPartValidated"]);
 
-	const { validateStudentInfoMutation } = useStudent();
-
-	const validation = ref(() => validateStudentInfoMutation.data?.value);
+	const { mutate, isSuccess, isError, data, error } =
+		useStudent().validateStudentInfoMutation;
 
 	const onSubmit = handleSubmit((values) => {
-		validateStudentInfoMutation.mutate({
-			nas: values.assuranceSociale,
+		console.log(`onSubmit: ${JSON.stringify(values)}`);
+
+		mutate({
+			nas: values.nas,
 			birthdate: values.birthdate
 		});
 	});
 
-	watch(validation.value, (newValue) => {
-		console.log(newValue);
+	watch(isSuccess, () => {
+		console.log(`isSuccess: ${isSuccess.value}`);
+		console.log(`validation data: ${JSON.stringify(data.value)}`);
 
-		if (newValue.data.valid) {
+		if (isSuccess.value) {
+			console.log(`formValues: ${JSON.stringify(values)}`);
 			emit("firstPartValidated", values);
-		} else {
-			errors.value.birthdate = validateStudentInfoMutation.error?.value as string;
 		}
+	});
+
+	watch(isError, () => {
+		console.log(error);
+
+		errors.value.birthdate = error?.value as string;
 	});
 </script>

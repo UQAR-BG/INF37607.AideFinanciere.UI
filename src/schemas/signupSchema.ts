@@ -3,7 +3,7 @@
 import * as zod from "zod";
 
 export const firstPartSignupSchema = zod.object({
-	assuranceSociale: zod
+	nas: zod
 		.string({ required_error: "Le numéro d'assurance sociale est requis" })
 		.min(9, "Le numéro d'assurance sociale est requis")
 		.regex(
