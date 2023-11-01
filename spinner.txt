@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/60997678/vuetify-loader-component-until-page-fully-loaded
