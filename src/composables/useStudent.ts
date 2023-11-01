@@ -1,15 +1,33 @@
-import { getStudentInfo, updateStudentInfo } from "@/api/studentApi";
-import type { Student } from "@/types/student";
+import {
+	getStudentInfo,
+	updateStudentInfo,
+	validateStudentInfo
+} from "@/api/studentApi";
+import type { Student, StudentInfoValidateResponse } from "@/types/student";
 import { createToast } from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "vue-query";
 
 export const useStudent = () => {
 	const queryClient = useQueryClient();
 
-	const studentInfoQuery = useQuery("studentInfo", () => getStudentInfo(), {
-		staleTime: 1000 * 60 * 5,
-		retry: 3
-	});
+	const studentInfoQuery = useQuery<Student>(
+		"studentInfo",
+		() => getStudentInfo(),
+		{
+			staleTime: 1000 * 60 * 5,
+			retry: 3
+		}
+	);
+
+	const validateStudentInfoMutation = useMutation(
+		(studentInfo: { nas: string; birthdate: Date }) =>
+			validateStudentInfo(studentInfo),
+		{
+			onError: (error) => {
+				console.log(error);
+			}
+		}
+	);
 
 	const studentInfoMutation = useMutation(
 		(studentInfo: Student) => updateStudentInfo(studentInfo),
@@ -40,6 +58,7 @@ export const useStudent = () => {
 
 	return {
 		studentInfoQuery,
-		studentInfoMutation
+		studentInfoMutation,
+		validateStudentInfoMutation
 	};
 };

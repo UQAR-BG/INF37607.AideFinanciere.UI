@@ -1,6 +1,10 @@
 import axios from "axios";
 
-import type { Student, StudentResponse } from "@/types/student";
+import type {
+	Student,
+	StudentInfoValidateResponse,
+	StudentResponse
+} from "@/types/student";
 
 const BASE_URL = "http://localhost:8000/api/";
 
@@ -37,4 +41,19 @@ export const updateStudentInfo = async (
 		studentInfo
 	);
 	return response.data;
+};
+
+export const validateStudentInfo = async (studentInfo: {
+	nas: string;
+	birthdate: Date;
+}): Promise<StudentInfoValidateResponse> => {
+	return new Promise((resolve, reject) => {
+		resolve({
+			status: "success",
+			message: "",
+			data: {
+				valid: true
+			}
+		});
+	});
 };

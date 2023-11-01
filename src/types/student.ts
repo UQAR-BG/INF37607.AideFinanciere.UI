@@ -1,3 +1,5 @@
+import { boolean } from "zod";
+
 export type Student = {
 	codePermanent?: string;
 	firstname?: string;
@@ -15,5 +17,13 @@ export type StudentResponse = {
 	status: string;
 	data: {
 		student: Student;
+	};
+};
+
+export type StudentInfoValidateResponse = {
+	status: string;
+	message: string;
+	data: {
+		valid: boolean;
 	};
 };

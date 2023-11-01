@@ -2,7 +2,7 @@
 	<section class="form-section">
 		<h1 class="first-heading" v-once>Inscription</h1>
 
-		<SignupForm />
+		<FirstPartSignupForm />
 	</section>
 </template>
 
