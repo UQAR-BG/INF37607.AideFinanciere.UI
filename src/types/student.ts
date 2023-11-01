@@ -20,6 +20,14 @@ export type SignupStudentInfo = {
 	passwordConfirm?: string;
 };
 
+export type SignupResponse = {
+	status: string;
+	message: string;
+	data: {
+		student: Student;
+	};
+};
+
 export type StudentResponse = {
 	status: string;
 	data: {

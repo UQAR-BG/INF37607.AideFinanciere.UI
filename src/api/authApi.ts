@@ -4,6 +4,8 @@ import axios from "axios";
 import type { GenericResponse } from "@/types/auth/generic";
 import type { LoginResponse, LoginInput } from "@/types/auth/login";
 import type { UserResponse } from "@/types/auth/user";
+import type { SignUpInput } from "@/types/auth/signup";
+import type { SignupResponse } from "@/types/student";
 
 const BASE_URL = "http://localhost:8000/api/";
 
@@ -35,9 +37,23 @@ authApi.interceptors.response.use(
 	}
 );
 
-export const signUpUserFn = async (user: RegisterInput) => {
-	const response = await authApi.post<GenericResponse>("auth/register", user);
-	return response.data;
+export const signUpUserFn = async (
+	user: SignUpInput
+): Promise<SignupResponse> => {
+	// const response = await authApi.post<GenericResponse>("auth/register", user);
+	// return response.data;
+
+	return new Promise((resolve) => {
+		resolve({
+			status: "success",
+			message: "Le compte d'étudiant a été créé avec succès",
+			data: {
+				student: {
+					codePermanent: "TEST012345"
+				}
+			}
+		});
+	});
 };
 
 export const loginUserFn = async (user: LoginInput) => {

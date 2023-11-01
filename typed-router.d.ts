@@ -41,6 +41,7 @@ declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
     'home': RouteRecordInfo<'home', '/', Record<never, never>, Record<never, never>>,
     'aide-financiere': RouteRecordInfo<'aide-financiere', '/aide-financiere', Record<never, never>, Record<never, never>>,
+    '/confirmation-creation-compte/[id]': RouteRecordInfo<'/confirmation-creation-compte/[id]', '/confirmation-creation-compte/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'dossier': RouteRecordInfo<'dossier', '/dossier', Record<never, never>, Record<never, never>>,
     'inscription': RouteRecordInfo<'inscription', '/inscription', Record<never, never>, Record<never, never>>,
     'montants': RouteRecordInfo<'montants', '/montants', Record<never, never>, Record<never, never>>,
