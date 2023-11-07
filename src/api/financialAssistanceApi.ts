@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { FinancialAidType, type FinancialAid } from "@/types/financialAid";
+import {
+	FinancialAidType,
+	type FinancialAid,
+	type FinancialAidClaimResponse,
+	type FinancialAidClaim,
+	FinancialAidClaimStatus
+} from "@/types/financialAid";
 
 const BASE_URL = "http://localhost:8000/api/";
 
@@ -49,13 +55,39 @@ const financialAids: FinancialAid[] = [
 	}
 ];
 
+const activeFinancialAidClaims: FinancialAidClaim[] = [
+	{
+		id: 1,
+		codePermanentDemandeur: "TEST012345",
+		studentId: 3,
+		firstname: "John",
+		lastname: "Doe",
+		phoneNumber: "418-202-8998",
+		credits: 45,
+		status: FinancialAidClaimStatus.Pending
+	}
+];
+
 export const getAllFinancialAids = async (
 	codePermanent: string
 ): Promise<FinancialAid[]> => {
-	// const response = await studentApi.get<FinancialAid[]>("student");
+	// const response = await financialAidsApi.get<FinancialAid[]>("aide-financiere");
 	// return response.data;
 
 	return new Promise((resolve) => {
 		resolve(financialAids);
+	});
+};
+
+export const getActiveFinancialAidClaims = async (
+	codePermanent: string
+): Promise<FinancialAidClaim[]> => {
+	// const response = await financialAidsApi.get<FinancialAidClaimResponse>(
+	// 	"aide-financiere/claim/active"
+	// );
+	// return response.data;
+
+	return new Promise((resolve) => {
+		resolve(activeFinancialAidClaims);
 	});
 };

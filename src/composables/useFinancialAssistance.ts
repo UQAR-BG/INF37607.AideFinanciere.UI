@@ -1,6 +1,13 @@
-import { getAllFinancialAids } from "@/api/financialAssistanceApi";
+import {
+	getActiveFinancialAidClaims,
+	getAllFinancialAids
+} from "@/api/financialAssistanceApi";
 import { defaultValues, type FinancialAidFilters } from "@/types/filters";
-import { FinancialAidType, type FinancialAid } from "@/types/financialAid";
+import {
+	FinancialAidType,
+	type FinancialAid,
+	type FinancialAidClaim
+} from "@/types/financialAid";
 import { useQuery } from "vue-query";
 
 export const useFinancialAssistance = (codePermanent?: string) => {
@@ -24,6 +31,16 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		);
 	};
 
+	const activeFinancialAidClaimsQuery = useQuery(
+		"activeClaims",
+		() => getActiveFinancialAidClaims(codePermanent),
+		{
+			enabled: codePermanent !== null,
+			staleTime: 1000 * 60 * 5,
+			retry: 3
+		}
+	);
+
 	const grants = computed<FinancialAid[]>(() =>
 		allFinancialAidsQuery.data?.value?.filter(
 			(a) => a.type === FinancialAidType.Grant
@@ -44,6 +61,14 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		loans.value?.reduce((a, c) => a + c.amount, 0)
 	);
 
+	const isActiveFinancialAidClaim = computed<boolean>(
+		() => activeFinancialAidClaimsQuery.data?.value.length > 0
+	);
+
+	const pendingFinancialAidClaim = computed<FinancialAidClaim>(
+		() => activeFinancialAidClaimsQuery.data?.value[0]
+	);
+
 	const filterValues = reactive(defaultValues);
 
 	const formatType = (type: FinancialAidType) => {
@@ -53,11 +78,14 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 	return {
 		allFinancialAidsQuery,
 		filterFinancialAids,
+		activeFinancialAidClaimsQuery,
 		grants,
 		loans,
 		grantSum,
 		loanSum,
 		filterValues,
+		isActiveFinancialAidClaim,
+		pendingFinancialAidClaim,
 		formatType
 	};
 };

@@ -21,6 +21,7 @@ export type FinancialAidClaim = {
 	student?: Student;
 	firstname?: string;
 	lastname?: string;
+	phoneNumber?: string;
 	secondPhoneNumber?: string;
 	citizenship?: string;
 	immigrationCode?: string;
@@ -50,5 +51,12 @@ export type FinancialAidResponse = {
 	status: string;
 	data: {
 		financialAid: FinancialAid;
+	};
+};
+
+export type FinancialAidClaimResponse = {
+	status: string;
+	data: {
+		financialAidClaims: FinancialAidClaim[];
 	};
 };
