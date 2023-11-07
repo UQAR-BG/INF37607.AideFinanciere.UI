@@ -47,6 +47,12 @@ export const updateStudentInfo = async (
 export const validateStudentInfo = async (
 	studentInfo: SignupStudentInfo
 ): Promise<StudentInfoValidateResponse> => {
+	// const response = await studentApi.post<StudentInfoValidateResponse>(
+	// 	"student/validate",
+	// 	studentInfo
+	// );
+	// return response.data;
+
 	return new Promise((resolve) => {
 		resolve({
 			status: "success",
