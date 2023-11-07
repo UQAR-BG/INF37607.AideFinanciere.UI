@@ -116,7 +116,7 @@ defineProps({
     }
 });
 
-const emit = defineEmits(["selectChoice", "UseResquetInWork", "onSecondPartCancel"]);
+const emit = defineEmits(["selectChoice", "UseResquetInWork", "onSecondPartCancel", "onFormSubmit"]);
 
 let DoesUseResquetInWork;
 
@@ -147,12 +147,14 @@ const cancel = (() => {
     emit("onSecondPartCancel", false);
 });
 
+
+// TODO
 const save = (() => {
-    emit("onSecondPartCancel", false);
+    emit("onFormSubmit");
 });
 
 const onSubmit = handleSubmit((values) => {
-
+    //emit("aaa", true);
 });
 </script>
 
