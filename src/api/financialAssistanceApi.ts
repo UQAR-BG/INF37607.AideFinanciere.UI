@@ -6,7 +6,8 @@ import {
 	type FinancialAidClaimResponse,
 	type FinancialAidClaim,
 	FinancialAidClaimStatus,
-	type FinancialAidResponse
+	type FinancialAidResponse,
+	type FinancialAidClaimStatusChangeResponse
 } from "@/types/financialAid";
 
 const BASE_URL = "http://localhost:8000/api/";
@@ -100,5 +101,27 @@ export const updateFinancialAidClaim = async (
 		"aide-financiere/claim",
 		claim
 	);
+	return response.data;
+};
+
+export const completeFinancialAidClaim = async (
+	claimId: number
+): Promise<FinancialAidClaimStatusChangeResponse> => {
+	const response =
+		await financialAidsApi.post<FinancialAidClaimStatusChangeResponse>(
+			"aide-financiere/claim/complete",
+			claimId
+		);
+	return response.data;
+};
+
+export const cancelFinancialAidClaim = async (
+	claimId: number
+): Promise<FinancialAidClaimStatusChangeResponse> => {
+	const response =
+		await financialAidsApi.post<FinancialAidClaimStatusChangeResponse>(
+			"aide-financiere/claim/cancel",
+			claimId
+		);
 	return response.data;
 };

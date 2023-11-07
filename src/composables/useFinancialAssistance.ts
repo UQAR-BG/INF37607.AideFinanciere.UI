@@ -1,7 +1,9 @@
 import {
+	completeFinancialAidClaim,
 	getActiveFinancialAidClaims,
 	getAllFinancialAids,
-	updateFinancialAidClaim
+	updateFinancialAidClaim,
+	cancelFinancialAidClaim
 } from "@/api/financialAssistanceApi";
 import { defaultValues, type FinancialAidFilters } from "@/types/filters";
 import {
@@ -72,6 +74,14 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		}
 	);
 
+	const completeClaimMutation = useMutation((claimId: number) =>
+		completeFinancialAidClaim(claimId)
+	);
+
+	const cancelClaimMutation = useMutation((claimId: number) =>
+		cancelFinancialAidClaim(claimId)
+	);
+
 	const grants = computed<FinancialAid[]>(() =>
 		allFinancialAidsQuery.data?.value?.filter(
 			(a) => a.type === FinancialAidType.Grant
@@ -111,6 +121,8 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		filterFinancialAids,
 		activeFinancialAidClaimsQuery,
 		financialAidClaimMutation,
+		completeClaimMutation,
+		cancelClaimMutation,
 		grants,
 		loans,
 		grantSum,

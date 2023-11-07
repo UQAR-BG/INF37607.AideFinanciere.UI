@@ -60,3 +60,10 @@ export type FinancialAidClaimResponse = {
 		financialAidClaims: FinancialAidClaim[];
 	};
 };
+
+export type FinancialAidClaimStatusChangeResponse = {
+	status: string;
+	data: {
+		success: boolean;
+	};
+};
