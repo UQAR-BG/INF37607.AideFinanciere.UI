@@ -1,6 +1,7 @@
 import {
 	getActiveFinancialAidClaims,
-	getAllFinancialAids
+	getAllFinancialAids,
+	updateFinancialAidClaim
 } from "@/api/financialAssistanceApi";
 import { defaultValues, type FinancialAidFilters } from "@/types/filters";
 import {
@@ -8,9 +9,12 @@ import {
 	type FinancialAid,
 	type FinancialAidClaim
 } from "@/types/financialAid";
-import { useQuery } from "vue-query";
+import { createToast } from "mosha-vue-toastify";
+import { useMutation, useQuery, useQueryClient } from "vue-query";
 
 export const useFinancialAssistance = (codePermanent?: string) => {
+	const queryClient = useQueryClient();
+
 	const allFinancialAidsQuery = useQuery(
 		["financialAids", codePermanent],
 		() => getAllFinancialAids(codePermanent),
@@ -38,6 +42,33 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 			enabled: codePermanent !== null,
 			staleTime: 1000 * 60 * 5,
 			retry: 3
+		}
+	);
+
+	const financialAidClaimMutation = useMutation(
+		(claim: FinancialAidClaim) => updateFinancialAidClaim(claim),
+		{
+			onError: (error) => {
+				if (Array.isArray(error as any)) {
+					(error as any).forEach((el: any) =>
+						createToast(el.message, {
+							position: "top-right",
+							type: "warning"
+						})
+					);
+				} else {
+					createToast((error as any).message, {
+						position: "top-right",
+						type: "danger"
+					});
+				}
+			},
+			onSuccess: () => {
+				queryClient.refetchQueries("activeClaims");
+				createToast("Demande d'aide financière modifiée avec succès", {
+					position: "top-right"
+				});
+			}
 		}
 	);
 
@@ -79,6 +110,7 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		allFinancialAidsQuery,
 		filterFinancialAids,
 		activeFinancialAidClaimsQuery,
+		financialAidClaimMutation,
 		grants,
 		loans,
 		grantSum,

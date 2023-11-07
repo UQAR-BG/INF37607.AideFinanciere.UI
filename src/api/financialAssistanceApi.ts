@@ -5,7 +5,8 @@ import {
 	type FinancialAid,
 	type FinancialAidClaimResponse,
 	type FinancialAidClaim,
-	FinancialAidClaimStatus
+	FinancialAidClaimStatus,
+	type FinancialAidResponse
 } from "@/types/financialAid";
 
 const BASE_URL = "http://localhost:8000/api/";
@@ -90,4 +91,14 @@ export const getActiveFinancialAidClaims = async (
 	return new Promise((resolve) => {
 		resolve(activeFinancialAidClaims);
 	});
+};
+
+export const updateFinancialAidClaim = async (
+	claim: FinancialAidClaim
+): Promise<FinancialAidResponse> => {
+	const response = await financialAidsApi.patch<FinancialAidResponse>(
+		"aide-financiere/claim",
+		claim
+	);
+	return response.data;
 };
