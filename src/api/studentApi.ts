@@ -1,23 +1,15 @@
-import axios from "axios";
-
 import type {
 	SignupStudentInfo,
 	Student,
 	StudentInfoValidateResponse,
 	StudentResponse
 } from "@/types/student";
+import { useHttp } from "@/composables/useHttp";
 
-const BASE_URL = "http://localhost:8000/api/";
-
-const studentApi = axios.create({
-	baseURL: BASE_URL,
-	withCredentials: true
-});
-
-studentApi.defaults.headers.common["Content-Type"] = "application/json";
+const { httpService } = useHttp();
 
 export const getStudentInfo = async (): Promise<Student> => {
-	// const response = await studentApi.get<Student>("student");
+	// const response = await httpService.get<Student>("student");
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -37,7 +29,7 @@ export const getStudentInfo = async (): Promise<Student> => {
 export const updateStudentInfo = async (
 	studentInfo: Student
 ): Promise<StudentResponse> => {
-	const response = await studentApi.patch<StudentResponse>(
+	const response = await httpService.patch<StudentResponse>(
 		"student",
 		studentInfo
 	);
@@ -47,7 +39,7 @@ export const updateStudentInfo = async (
 export const validateStudentInfo = async (
 	studentInfo: SignupStudentInfo
 ): Promise<StudentInfoValidateResponse> => {
-	// const response = await studentApi.post<StudentInfoValidateResponse>(
+	// const response = await httpService.post<StudentInfoValidateResponse>(
 	// 	"student/validate",
 	// 	studentInfo
 	// );

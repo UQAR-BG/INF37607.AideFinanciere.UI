@@ -1,23 +1,14 @@
-import axios from "axios";
-
 import {
 	FinancialAidType,
 	type FinancialAid,
-	type FinancialAidClaimResponse,
 	type FinancialAidClaim,
 	FinancialAidClaimStatus,
 	type FinancialAidResponse,
 	type FinancialAidClaimStatusChangeResponse
 } from "@/types/financialAid";
+import { useHttp } from "@/composables/useHttp";
 
-const BASE_URL = "http://localhost:8000/api/";
-
-const financialAidsApi = axios.create({
-	baseURL: BASE_URL,
-	withCredentials: true
-});
-
-financialAidsApi.defaults.headers.common["Content-Type"] = "application/json";
+const { httpService } = useHttp();
 
 const financialAids: FinancialAid[] = [
 	{
@@ -73,7 +64,7 @@ const activeFinancialAidClaims: FinancialAidClaim[] = [
 export const getAllFinancialAids = async (
 	codePermanent: string
 ): Promise<FinancialAid[]> => {
-	// const response = await financialAidsApi.get<FinancialAid[]>("aide-financiere");
+	// const response = await httpService.get<FinancialAid[]>("aide-financiere");
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -84,7 +75,7 @@ export const getAllFinancialAids = async (
 export const getActiveFinancialAidClaims = async (
 	codePermanent: string
 ): Promise<FinancialAidClaim[]> => {
-	// const response = await financialAidsApi.get<FinancialAidClaimResponse>(
+	// const response = await httpService.get<FinancialAidClaimResponse>(
 	// 	"aide-financiere/claim/active"
 	// );
 	// return response.data;
@@ -97,7 +88,7 @@ export const getActiveFinancialAidClaims = async (
 export const updateFinancialAidClaim = async (
 	claim: FinancialAidClaim
 ): Promise<FinancialAidResponse> => {
-	const response = await financialAidsApi.patch<FinancialAidResponse>(
+	const response = await httpService.patch<FinancialAidResponse>(
 		"aide-financiere/claim",
 		claim
 	);
@@ -107,21 +98,19 @@ export const updateFinancialAidClaim = async (
 export const completeFinancialAidClaim = async (
 	claimId: number
 ): Promise<FinancialAidClaimStatusChangeResponse> => {
-	const response =
-		await financialAidsApi.post<FinancialAidClaimStatusChangeResponse>(
-			"aide-financiere/claim/complete",
-			claimId
-		);
+	const response = await httpService.post<FinancialAidClaimStatusChangeResponse>(
+		"aide-financiere/claim/complete",
+		claimId
+	);
 	return response.data;
 };
 
 export const cancelFinancialAidClaim = async (
 	claimId: number
 ): Promise<FinancialAidClaimStatusChangeResponse> => {
-	const response =
-		await financialAidsApi.post<FinancialAidClaimStatusChangeResponse>(
-			"aide-financiere/claim/cancel",
-			claimId
-		);
+	const response = await httpService.post<FinancialAidClaimStatusChangeResponse>(
+		"aide-financiere/claim/cancel",
+		claimId
+	);
 	return response.data;
 };
