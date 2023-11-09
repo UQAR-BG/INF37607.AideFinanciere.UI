@@ -13,6 +13,7 @@
 /* BASE STYLES */
 html {
   overflow-x: hidden;
+  line-height: 24px !important;
 }
 
 body {
