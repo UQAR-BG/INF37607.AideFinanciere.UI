@@ -8,8 +8,6 @@ import {
 } from "@/types/financialAid";
 import { useHttp } from "@/composables/useHttp";
 
-const { httpService } = useHttp();
-
 const financialAids: FinancialAid[] = [
 	{
 		id: 1,
@@ -64,7 +62,7 @@ const activeFinancialAidClaims: FinancialAidClaim[] = [
 export const getAllFinancialAids = async (
 	codePermanent: string
 ): Promise<FinancialAid[]> => {
-	// const response = await httpService.get<FinancialAid[]>("aide-financiere");
+	// const response = await useHttp().httpService.get<FinancialAid[]>("aide-financiere");
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -75,7 +73,7 @@ export const getAllFinancialAids = async (
 export const getActiveFinancialAidClaims = async (
 	codePermanent: string
 ): Promise<FinancialAidClaim[]> => {
-	// const response = await httpService.get<FinancialAidClaimResponse>(
+	// const response = await useHttp().httpService.get<FinancialAidClaimResponse>(
 	// 	"aide-financiere/claim/active"
 	// );
 	// return response.data;
@@ -88,7 +86,7 @@ export const getActiveFinancialAidClaims = async (
 export const updateFinancialAidClaim = async (
 	claim: FinancialAidClaim
 ): Promise<FinancialAidResponse> => {
-	const response = await httpService.patch<FinancialAidResponse>(
+	const response = await useHttp().httpService.patch<FinancialAidResponse>(
 		"aide-financiere/claim",
 		claim
 	);
@@ -98,19 +96,21 @@ export const updateFinancialAidClaim = async (
 export const completeFinancialAidClaim = async (
 	claimId: number
 ): Promise<FinancialAidClaimStatusChangeResponse> => {
-	const response = await httpService.post<FinancialAidClaimStatusChangeResponse>(
-		"aide-financiere/claim/complete",
-		claimId
-	);
+	const response =
+		await useHttp().httpService.post<FinancialAidClaimStatusChangeResponse>(
+			"aide-financiere/claim/complete",
+			claimId
+		);
 	return response.data;
 };
 
 export const cancelFinancialAidClaim = async (
 	claimId: number
 ): Promise<FinancialAidClaimStatusChangeResponse> => {
-	const response = await httpService.post<FinancialAidClaimStatusChangeResponse>(
-		"aide-financiere/claim/cancel",
-		claimId
-	);
+	const response =
+		await useHttp().httpService.post<FinancialAidClaimStatusChangeResponse>(
+			"aide-financiere/claim/cancel",
+			claimId
+		);
 	return response.data;
 };

@@ -15,6 +15,7 @@ services:
   environment:
    HOST: 0.0.0.0
    PORT: 3000
+   NUXT_PUBLIC_API_BASE: "http://localhost:3001/api/"
  dev-app:
   image: aide-financiere-webapp:latest
   container_name: dev-app
@@ -29,3 +30,4 @@ services:
   environment:
    HOST: 0.0.0.0
    PORT: 3001
+   NUXT_PUBLIC_API_BASE: "http://localhost:3001/api/"

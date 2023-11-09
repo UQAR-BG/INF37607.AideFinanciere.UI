@@ -25,5 +25,10 @@ export default defineNuxtConfig({
 	},
 	app: {
 		layoutTransition: { name: "layout", mode: "out-in" }
+	},
+	runtimeConfig: {
+		public: {
+			apiBase: process.env.API_BASE || ""
+		}
 	}
 });

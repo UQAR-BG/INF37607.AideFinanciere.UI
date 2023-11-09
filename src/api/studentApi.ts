@@ -6,10 +6,8 @@ import type {
 } from "@/types/student";
 import { useHttp } from "@/composables/useHttp";
 
-const { httpService } = useHttp();
-
 export const getStudentInfo = async (): Promise<Student> => {
-	// const response = await httpService.get<Student>("student");
+	// const response = await useHttp().httpService.get<Student>("student");
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -29,7 +27,7 @@ export const getStudentInfo = async (): Promise<Student> => {
 export const updateStudentInfo = async (
 	studentInfo: Student
 ): Promise<StudentResponse> => {
-	const response = await httpService.patch<StudentResponse>(
+	const response = await useHttp().httpService.patch<StudentResponse>(
 		"student",
 		studentInfo
 	);
@@ -39,7 +37,7 @@ export const updateStudentInfo = async (
 export const validateStudentInfo = async (
 	studentInfo: SignupStudentInfo
 ): Promise<StudentInfoValidateResponse> => {
-	// const response = await httpService.post<StudentInfoValidateResponse>(
+	// const response = await useHttp().httpService.post<StudentInfoValidateResponse>(
 	// 	"student/validate",
 	// 	studentInfo
 	// );

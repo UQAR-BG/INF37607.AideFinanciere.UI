@@ -6,17 +6,17 @@ import type { SignUpInput } from "@/types/auth/signup";
 import type { SignupResponse } from "@/types/student";
 import { useHttp } from "@/composables/useHttp";
 
-const { httpService } = useHttp();
-
 export const refreshAccessTokenFn = async () => {
-	const response = await httpService.get<LoginResponse>("auth/refresh");
+	const response = await useHttp().httpService.get<LoginResponse>(
+		"auth/refresh"
+	);
 	return response.data;
 };
 
 export const signUpUserFn = async (
 	user: SignUpInput
 ): Promise<SignupResponse> => {
-	// const response = await httpService.post<GenericResponse>("auth/register", user);
+	// const response = await useHttp().httpService.post<GenericResponse>("auth/register", user);
 	// return response.data;
 
 	return new Promise((resolve) => {
@@ -33,16 +33,21 @@ export const signUpUserFn = async (
 };
 
 export const loginUserFn = async (user: LoginInput) => {
-	const response = await httpService.post<LoginResponse>("auth/login", user);
+	const response = await useHttp().httpService.post<LoginResponse>(
+		"auth/login",
+		user
+	);
 	return response.data;
 };
 
 export const logoutUserFn = async () => {
-	const response = await httpService.get<GenericResponse>("auth/logout");
+	const response = await useHttp().httpService.get<GenericResponse>(
+		"auth/logout"
+	);
 	return response.data;
 };
 
 export const getMeFn = async () => {
-	const response = await httpService.get<UserResponse>("users/me");
+	const response = await useHttp().httpService.get<UserResponse>("users/me");
 	return response.data;
 };
