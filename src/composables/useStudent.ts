@@ -4,7 +4,7 @@ import {
 	validateStudentInfo
 } from "@/api/studentApi";
 import type { SignupStudentInfo, Student } from "@/types/student";
-import { createToast } from "mosha-vue-toastify";
+import * as Toast from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/vue-query";
 
 export const useStudent = () => {
@@ -27,13 +27,13 @@ export const useStudent = () => {
 		onError: (error) => {
 			if (Array.isArray(error as any)) {
 				(error as any).forEach((el: any) =>
-					createToast(el.message, {
+					Toast.createToast(el.message, {
 						position: "top-right",
 						type: "warning"
 					})
 				);
 			} else {
-				createToast((error as any).message, {
+				Toast.createToast((error as any).message, {
 					position: "top-right",
 					type: "danger"
 				});
@@ -41,7 +41,7 @@ export const useStudent = () => {
 		},
 		onSuccess: () => {
 			queryClient.refetchQueries({ queryKey: ["studentInfo"] });
-			createToast("Renseignements personnels modifiés avec succès", {
+			Toast.createToast("Renseignements personnels modifiés avec succès", {
 				position: "top-right"
 			});
 		}

@@ -1,6 +1,6 @@
 import { loginUserFn } from "@/api/authApi";
 import type { LoginInput } from "@/types/auth/login";
-import { createToast } from "mosha-vue-toastify";
+import * as Toast from "mosha-vue-toastify";
 import { useMutation, useQueryClient } from "@tanstack/vue-query";
 
 export const useLogin = () => {
@@ -12,13 +12,13 @@ export const useLogin = () => {
 		onError: (error) => {
 			if (Array.isArray(error as any)) {
 				(error as any).forEach((el: any) =>
-					createToast(el.message, {
+					Toast.createToast(el.message, {
 						position: "top-right",
 						type: "warning"
 					})
 				);
 			} else {
-				createToast((error as any).message, {
+				Toast.createToast((error as any).message, {
 					position: "top-right",
 					type: "danger"
 				});
@@ -26,7 +26,7 @@ export const useLogin = () => {
 		},
 		onSuccess: () => {
 			queryClient.refetchQueries({ queryKey: ["authUser"] });
-			createToast("Indentification réussie", {
+			Toast.createToast("Indentification réussie", {
 				position: "top-right"
 			});
 			router.push({ name: "dossier" });

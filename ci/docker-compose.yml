@@ -1,0 +1,31 @@
+version: "3"
+services:
+ web-app:
+  build:
+   dockerfile: ./ci/Dockerfile
+   context: ../
+  image: aide-financiere-webapp:latest
+  container_name: web-app
+  restart: always
+  working_dir: /usr/src/app
+  ports:
+   - "3000:3000"
+  command: [sh, -c, "npm run start"]
+  tty: true
+  environment:
+   HOST: 0.0.0.0
+   PORT: 3000
+ dev-app:
+  image: aide-financiere-webapp:latest
+  container_name: dev-app
+  restart: always
+  working_dir: /usr/src/app
+  ports:
+   - "3001:3001"
+  command: [sh, -c, "npm run dev"]
+  tty: true
+  volumes:
+   - "../src/:/usr/src/app/src/"
+  environment:
+   HOST: 0.0.0.0
+   PORT: 3001

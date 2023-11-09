@@ -11,7 +11,7 @@ import {
 	type FinancialAid,
 	type FinancialAidClaim
 } from "@/types/financialAid";
-import { createToast } from "mosha-vue-toastify";
+import * as Toast from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/vue-query";
 
 export const useFinancialAssistance = (codePermanent?: string) => {
@@ -48,13 +48,13 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		onError: (error) => {
 			if (Array.isArray(error as any)) {
 				(error as any).forEach((el: any) =>
-					createToast(el.message, {
+					Toast.createToast(el.message, {
 						position: "top-right",
 						type: "warning"
 					})
 				);
 			} else {
-				createToast((error as any).message, {
+				Toast.createToast((error as any).message, {
 					position: "top-right",
 					type: "danger"
 				});
@@ -62,7 +62,7 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		},
 		onSuccess: () => {
 			queryClient.refetchQueries({ queryKey: ["activeClaims"] });
-			createToast("Demande d'aide financière modifiée avec succès", {
+			Toast.createToast("Demande d'aide financière modifiée avec succès", {
 				position: "top-right"
 			});
 		}

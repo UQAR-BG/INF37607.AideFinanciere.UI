@@ -1,0 +1,10 @@
+**/node_modules
+**/.nuxt
+**/.output
+**/.git
+
+*.gitignore
+*.prettierignore
+*.dockerignore
+*.md
+*.cjs

@@ -1,7 +1,7 @@
 import { signUpUserFn } from "@/api/authApi";
 import type { SignUpInput } from "@/types/auth/signup";
 import type { SignupResponse } from "@/types/student";
-import { createToast } from "mosha-vue-toastify";
+import * as Toast from "mosha-vue-toastify";
 import { useMutation } from "@tanstack/vue-query";
 
 export const useSignup = () => {
@@ -12,13 +12,13 @@ export const useSignup = () => {
 		onError: (error) => {
 			if (Array.isArray((error as any).response.data.error)) {
 				(error as any).response.data.error.forEach((el: any) =>
-					createToast(el.message, {
+					Toast.createToast(el.message, {
 						position: "top-right",
 						type: "warning"
 					})
 				);
 			} else {
-				createToast((error as any).response.data.message, {
+				Toast.createToast((error as any).response.data.message, {
 					position: "top-right",
 					type: "danger"
 				});
