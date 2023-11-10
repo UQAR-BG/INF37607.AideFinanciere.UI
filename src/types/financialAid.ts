@@ -54,6 +54,16 @@ export type FinancialAidResponse = {
 	};
 };
 
+export const FinancialAidMaritalStatusFilter = ["Célibataire ", "Marié", "Veuf et non remarié", "Divorcé et non remarié", " Marié, mais séparé"];
+
+export type FinancialAidMaritalStatus = {
+	status: string;
+};
+
+export const defaultValues: FinancialAidMaritalStatus = {
+	status: FinancialAidMaritalStatusFilter[0]
+};
+
 export type FinancialAidClaimResponse = {
 	status: string;
 	data: {
