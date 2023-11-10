@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-	import { useCurrency } from "@/composables/useCurrency";
-	import { useDate } from "@/composables/useDate";
 	import { type FinancialAid } from "@/types/financialAid";
 
 	type propType = {

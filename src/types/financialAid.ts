@@ -21,6 +21,7 @@ export type FinancialAidClaim = {
 	student?: Student;
 	firstname?: string;
 	lastname?: string;
+	phoneNumber?: string;
 	secondPhoneNumber?: string;
 	citizenship?: string;
 	immigrationCode?: string;
@@ -61,4 +62,18 @@ export type FinancialAidMaritalStatus = {
 
 export const defaultValues: FinancialAidMaritalStatus = {
 	status: FinancialAidMaritalStatusFilter[0]
+};
+
+export type FinancialAidClaimResponse = {
+	status: string;
+	data: {
+		financialAidClaims: FinancialAidClaim[];
+	};
+};
+
+export type FinancialAidClaimStatusChangeResponse = {
+	status: string;
+	data: {
+		success: boolean;
+	};
 };

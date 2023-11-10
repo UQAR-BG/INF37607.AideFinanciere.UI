@@ -1,5 +1,3 @@
-import { boolean } from "zod";
-
 export type Student = {
 	codePermanent?: string;
 	firstname?: string;
