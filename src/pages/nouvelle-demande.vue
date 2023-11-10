@@ -18,7 +18,7 @@
 <template>
 	<NuxtLayout name="claim">
 		<main class="container page">
-			<span>Nouvelle demande de bourse ou de prêt</span>
+			<StudentInfoDemande />
 		</main>
 	</NuxtLayout>
 </template>

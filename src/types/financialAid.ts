@@ -19,6 +19,9 @@ export type FinancialAidClaim = {
 	codeProgramme?: string;
 	studentId?: number;
 	student?: Student;
+	nas?: string;
+	email?: string;
+	address?: string;
 	firstname?: string;
 	lastname?: string;
 	phoneNumber?: string;
@@ -52,6 +55,22 @@ export type FinancialAidResponse = {
 	data: {
 		financialAid: FinancialAid;
 	};
+};
+
+export const FinancialAidMaritalStatusFilter = [
+	"Célibataire ",
+	"Marié",
+	"Veuf et non remarié",
+	"Divorcé et non remarié",
+	" Marié, mais séparé"
+];
+
+export type FinancialAidMaritalStatus = {
+	maritalStatus: string;
+};
+
+export const defaultValues: FinancialAidClaim & FinancialAidMaritalStatus = {
+	maritalStatus: FinancialAidMaritalStatusFilter[0]
 };
 
 export type FinancialAidClaimResponse = {
