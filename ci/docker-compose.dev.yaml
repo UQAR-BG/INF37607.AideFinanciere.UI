@@ -1,21 +1,19 @@
 version: "3"
 services:
- web-app:
-  extends:
-   file: common-services.yaml
-   service: webapp
-  image: aide-financiere-webapp:latest
-  container_name: web-app
-  command: [sh, -c, "npm run start"]
-
  dev-app:
-  image: aide-financiere-webapp:latest
+  image: node:alpine
   container_name: dev-app
+  restart: always
+  working_dir: /usr/src/app
   ports:
    - "3001:3001"
   command: [sh, -c, "npm run dev"]
   volumes:
+   - "../:/usr/src/app/"
    - "../src/:/usr/src/app/src/"
    - "../node_modules/:/usr/src/app/node_modules/"
+  tty: true
   environment:
+   HOST: 0.0.0.0
    PORT: 3001
+   NUXT_PUBLIC_API_BASE: "http://localhost:3001/api/"

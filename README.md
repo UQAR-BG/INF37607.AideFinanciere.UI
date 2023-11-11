@@ -1,50 +1,26 @@
 ## COMMANDS
 
 ```
-# Build Docker image by itself:
+# Build and start the App in Release version using Docker-compose:
 ```
 
-docker image build -t aide-financiere-webapp --file ./ci/Dockerfile .
-
-```
-# Run the App container by itself:
-```
-
-docker container run -d -p 3000:3000 aide-financiere-webapp:latest
-
-```
-# Build the App using Docker-compose:
-```
-
-cd ./ci/
-docker-compose build
-
-```
-# Start the App using Docker-compose:
-```
-
-cd ./ci/
-docker-compose up
-
-```
-# Build and start the App using Docker-compose:
-```
-
-cd ./ci/
-docker-compose up --build
+npm run start:prod
 
 # Starting the App with Docker-compose creates a production version on
 
 # http://0.0.0.0:3000
 
-# and a development version on
+```
+# Start the App in Dev version using Docker-compose:
+```
+
+npm run start:dev
+
+# Starting the App with Docker-compose creates a dev version on
 
 # http://0.0.0.0:3001
 
 # While working with the dev version, any change in the src/ folder is reflected in the App.
-
-cd ./ci/
-docker-compose up --build
 
 # Nuxt 3 Minimal Starter
 

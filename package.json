@@ -4,6 +4,9 @@
   "type": "module",
   "scripts": {
     "start": "node .output/server/index.mjs",
+    "start:prod": "docker-compose -f ./ci/docker-compose.prod.yaml up --build -d",
+    "start:dev": "docker-compose -f ./ci/docker-compose.dev.yaml up -d",
+    "stop": "docker-compose -f ./ci/docker-compose.prod.yaml -f ./ci/docker-compose.dev.yaml down --remove-orphans",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
