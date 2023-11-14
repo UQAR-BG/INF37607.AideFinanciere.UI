@@ -1,6 +1,6 @@
 <template>
 	<NuxtLayout name="default">
-		<section class="main-section">
+		<section class="main-section animate-fade-in-1">
 			<h2 class="second-heading">{{ message }}</h2>
 			<DataGroup
 				label="Votre code permanent:"

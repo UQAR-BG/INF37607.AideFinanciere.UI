@@ -1,5 +1,5 @@
 <template>
-	<footer class="footer">
+	<footer class="footer animate-fade-in-2">
 		<ul class="footer-links">
 			<li class="text-xs footer-link">
 				<a

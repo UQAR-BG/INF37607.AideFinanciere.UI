@@ -1,6 +1,6 @@
 <template>
 	<nav class="navbar">
-		<div class="container">
+		<div class="m-auto max-w-5xl">
 			<div class="navlinks">
 				<NuxtLink
 					id="link-to-dossier"

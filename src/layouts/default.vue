@@ -3,7 +3,7 @@
 		<AppHeader />
 		<AppNavBar />
 
-		<main class="container page">
+		<main class="m-auto max-w-5xl page">
 			<slot />
 		</main>
 

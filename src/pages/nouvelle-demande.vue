@@ -17,7 +17,7 @@
 
 <template>
 	<NuxtLayout name="claim">
-		<section class="main-section">
+		<section class="main-section animate-fade-in-1">
 			<StudentInfoDemande />
 		</section>
 	</NuxtLayout>

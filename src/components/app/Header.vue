@@ -1,6 +1,6 @@
 <template>
 	<header class="header">
-		<div class="container">
+		<div class="m-auto max-w-5xl">
 			<div class="header-container">
 				<section class="logo-section">
 					<img class="logo" src="/images/logo.png" alt="Logo" />

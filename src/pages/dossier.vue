@@ -1,6 +1,6 @@
 <template>
 	<NuxtLayout name="student-profile">
-		<section class="main-section">
+		<section class="main-section animate-fade-in-1">
 			<AppHeading v-once>Renseignements personnels</AppHeading>
 
 			<StudentInfo />

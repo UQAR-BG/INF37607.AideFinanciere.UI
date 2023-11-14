@@ -1,6 +1,6 @@
 <template>
 	<div class="socials">
-		<div class="container socials-section">
+		<div class="m-auto max-w-5xl socials-section">
 			<span class="text-xs">Suivez-nous</span>
 			<nav class="social-icons">
 				<img src="/images/facebook_sf.png" alt="Facebook" class="social-icon" />

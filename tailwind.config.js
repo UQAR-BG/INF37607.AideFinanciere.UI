@@ -75,6 +75,32 @@ module.exports = {
 			},
 			lineHeight: {
 				inherit: "inherit !important"
+			},
+			keyframes: {
+				"fade-in": {
+					"0%": {
+						opacity: 0,
+						transform: "translateY(15px)"
+					},
+					"100%": {
+						opacity: 1,
+						transform: "translateY(0)"
+					}
+				},
+				bounce: {
+					"25%": {
+						transform: "translatey(5px)"
+					},
+					"75%": {
+						transform: "translatey(-5px)"
+					}
+				}
+			},
+			animation: {
+				"fade-in": "fade-in 0.4s",
+				"fade-in-1": "fade-in 0.4s 0.1s backwards",
+				"fade-in-2": "fade-in 0.4s 0.2s backwards",
+				bounce: "bounce 0.5s infinite"
 			}
 		}
 	},

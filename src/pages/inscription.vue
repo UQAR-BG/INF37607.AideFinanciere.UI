@@ -1,6 +1,6 @@
 <template>
 	<NuxtLayout name="default">
-		<section class="form-section">
+		<section class="form-section animate-fade-in-1">
 			<AppHeading v-once>Inscription</AppHeading>
 
 			<SignupForm />
