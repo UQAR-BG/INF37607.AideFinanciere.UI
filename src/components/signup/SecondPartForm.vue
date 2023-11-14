@@ -33,10 +33,8 @@
 				/>
 			</Block>
 			<button class="submit-btn" type="submit">Soumettre</button>
-			<span class="small-label form-span"
-				>Vous possédez déjà un compte ?<router-link
-					to="/"
-					class="small-label form-link"
+			<span class="text-xs form-span"
+				>Vous possédez déjà un compte ?<router-link to="/" class="text-xs form-link"
 					>Aller à l'identification</router-link
 				></span
 			>

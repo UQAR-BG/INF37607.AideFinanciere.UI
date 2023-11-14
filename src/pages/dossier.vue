@@ -1,7 +1,7 @@
 <template>
 	<NuxtLayout name="student-profile">
 		<section class="main-section">
-			<h1 class="first-heading" v-once>Renseignements personnels</h1>
+			<AppHeading v-once>Renseignements personnels</AppHeading>
 
 			<StudentInfo />
 		</section>

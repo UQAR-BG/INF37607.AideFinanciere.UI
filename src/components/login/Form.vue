@@ -14,10 +14,8 @@
 			:errorMessage="errors.password"
 		/>
 		<button class="submit-btn" type="submit">Soumettre</button>
-		<span class="small-label form-span"
-			>Besoin d'un compte ?<router-link
-				to="/inscription"
-				class="small-label form-link"
+		<span class="text-xs form-span"
+			>Besoin d'un compte ?<router-link to="/inscription" class="text-xs form-link"
 				>Aller à l'inscription</router-link
 			></span
 		>

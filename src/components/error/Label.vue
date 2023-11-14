@@ -1,5 +1,5 @@
 <template>
-	<span class="small-label error-label">{{ errorMessage }}</span>
+	<span class="text-xs error-label">{{ errorMessage }}</span>
 </template>
 
 <script setup lang="ts">

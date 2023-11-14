@@ -1,7 +1,7 @@
 <template>
 	<NuxtLayout name="student-profile">
 		<section class="main-section">
-			<h1 class="first-heading" v-once>Montants versés</h1>
+			<AppHeading v-once>Montants versés</AppHeading>
 
 			<FinancialAidFilter @filtersChanged="filtersChanged" />
 			<TransitionGroup class="card-list" name="card-list" tag="div">

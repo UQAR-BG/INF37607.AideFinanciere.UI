@@ -1,7 +1,7 @@
 <template>
 	<div class="socials">
 		<div class="container socials-section">
-			<span class="small-label">Suivez-nous</span>
+			<span class="text-xs">Suivez-nous</span>
 			<nav class="social-icons">
 				<img src="/images/facebook_sf.png" alt="Facebook" class="social-icon" />
 				<img src="/images/twitter_sf.png" alt="Twitter" class="social-icon" />

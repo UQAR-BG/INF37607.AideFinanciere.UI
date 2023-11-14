@@ -1,7 +1,7 @@
 <template>
 	<NuxtLayout name="student-profile">
 		<section class="main-section">
-			<h1 class="first-heading" v-once>Calcul de l'aide financière</h1>
+			<AppHeading v-once>Calcul de l'aide financière</AppHeading>
 
 			<DataGroup
 				label="Total des prêts versés"

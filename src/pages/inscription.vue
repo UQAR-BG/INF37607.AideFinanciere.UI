@@ -1,7 +1,7 @@
 <template>
 	<NuxtLayout name="default">
 		<section class="form-section">
-			<h1 class="first-heading" v-once>Inscription</h1>
+			<AppHeading v-once>Inscription</AppHeading>
 
 			<SignupForm />
 		</section>
