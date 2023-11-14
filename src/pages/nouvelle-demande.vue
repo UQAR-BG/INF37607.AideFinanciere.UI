@@ -17,9 +17,9 @@
 
 <template>
 	<NuxtLayout name="claim">
-		<main class="container page">
+		<section class="main-section">
 			<StudentInfoDemande />
-		</main>
+		</section>
 	</NuxtLayout>
 </template>
 

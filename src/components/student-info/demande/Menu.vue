@@ -1,24 +1,24 @@
 <template>
-	<div v-if="hasDemande">
-		<span
-			>Vous avez déjà une demande d'aide financière en cours. Vous pouvez la
-			continuer
+	<template v-if="hasDemande">
+		<p>Vous avez déjà une demande d'aide financière en cours.</p>
+		<p class="mt-1"
+			>Vous pouvez la continuer
 			<button class="link-btn" type="submit" @click="continuer">ici</button> ou
 			faire une
 			<button class="link-btn" type="submit" @click="nouvelle">
 				nouvelle demande</button
 			>.
-		</span>
-	</div>
-	<div v-else>
-		<span
-			>Vous n'avez pas de demande d'aide financière en cours. Vous pouvez commencer
-			une demande
+		</p>
+	</template>
+	<template v-else>
+		<p>Vous n'avez pas de demande d'aide financière en cours.</p>
+		<p class="mt-1">
+			Vous pouvez commencer une demande
 			<button class="link-btn" type="submit" @click="nouvelle">
 				nouvelle demande</button
 			>.
-		</span>
-	</div>
+		</p>
+	</template>
 </template>
 
 <script setup lang="ts">

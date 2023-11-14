@@ -386,6 +386,21 @@ h2.second-heading {
   animation: bounce 0.5s infinite;
 }
 
+.mt-half {
+  margin-top: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.link-btn {
+  width: fit-content;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 /* SOCIALS */
 .socials {
   width: 100%;

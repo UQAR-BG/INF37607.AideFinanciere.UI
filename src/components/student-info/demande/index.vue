@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<StudentInfoDemandeMenu
-			v-if="!firstPartValidated && !formWasSubmit"
-			@firstPartValidated="onFirstPartValidated"
-		/>
-		<StudentInfoDemandeForm
-			v-if="firstPartValidated"
-			:values="ResquetInWork"
-			@onSecondPartCancel="onSecondPartCancel"
-			@onFormSubmit="onFormSubmit"
-		/>
-		<span v-if="formWasSubmit">Merci d'avoir soumit votre demande.</span>
-	</div>
+	<StudentInfoDemandeMenu
+		v-if="!firstPartValidated && !formWasSubmit"
+		@firstPartValidated="onFirstPartValidated"
+	/>
+	<StudentInfoDemandeForm
+		v-if="firstPartValidated"
+		:values="ResquetInWork"
+		@onSecondPartCancel="onSecondPartCancel"
+		@onFormSubmit="onFormSubmit"
+	/>
+	<span v-if="formWasSubmit">Merci d'avoir soumit votre demande.</span>
 </template>
 
 <script setup lang="ts">
