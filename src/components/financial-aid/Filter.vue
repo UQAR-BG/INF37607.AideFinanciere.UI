@@ -1,6 +1,8 @@
 <template>
 	<form class="filter-form" @submit.prevent="">
-		<label class="select hover:after:animate-bounce hover:after:text-brand">
+		<label
+			class="select after:content-['\25BC'] after:absolute after:top-4 after:right-4 after:pointer-events-none after:transition-all after:duration-300 after:ease-in hover:after:animate-after-bounce hover:after:text-brand"
+		>
 			<select
 				class="filter"
 				name="year"
@@ -13,7 +15,9 @@
 				</option>
 			</select></label
 		>
-		<label class="select hover:after:animate-bounce">
+		<label
+			class="select after:content-['\25BC'] after:absolute after:top-4 after:right-4 after:pointer-events-none after:transition-all after:duration-300 after:ease-in hover:after:animate-after-bounce hover:after:text-brand"
+		>
 			<select
 				class="filter"
 				name="type"

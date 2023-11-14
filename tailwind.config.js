@@ -87,12 +87,12 @@ module.exports = {
 						transform: "translateY(0)"
 					}
 				},
-				bounce: {
+				"after-bounce": {
 					"25%": {
-						transform: "translatey(5px)"
+						transform: "translateY(5px)"
 					},
 					"75%": {
-						transform: "translatey(-5px)"
+						transform: "translateY(-5px)"
 					}
 				}
 			},
@@ -100,7 +100,7 @@ module.exports = {
 				"fade-in": "fade-in 0.4s",
 				"fade-in-1": "fade-in 0.4s 0.1s backwards",
 				"fade-in-2": "fade-in 0.4s 0.2s backwards",
-				bounce: "bounce 0.5s infinite"
+				"after-bounce": "after-bounce 0.5s infinite"
 			}
 		}
 	},
