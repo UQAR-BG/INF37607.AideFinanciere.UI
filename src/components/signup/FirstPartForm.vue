@@ -16,7 +16,9 @@
 			/>
 			<button class="submit-btn" type="submit">Soumettre</button>
 			<span class="text-xs form-span"
-				>Vous possédez déjà un compte ?<router-link to="/" class="text-xs form-link"
+				>Vous possédez déjà un compte ?<router-link
+					to="/"
+					class="text-xs text-font-link ml-2 font-normal underline"
 					>Aller à l'identification</router-link
 				></span
 			>

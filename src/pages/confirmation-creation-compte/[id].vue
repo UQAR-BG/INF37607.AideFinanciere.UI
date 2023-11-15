@@ -7,7 +7,9 @@
 				id="codePermanent"
 				:data="codePermanent"
 			/>
-			<NuxtLink to="/" class="form-link">Retour à l'identification</NuxtLink>
+			<NuxtLink to="/" class="text-font-link ml-2 font-normal underline"
+				>Retour à l'identification</NuxtLink
+			>
 		</section>
 	</NuxtLayout>
 </template>

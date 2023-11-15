@@ -76,6 +76,9 @@ module.exports = {
 			lineHeight: {
 				inherit: "inherit !important"
 			},
+			maxWidth: {
+				logo: "144px"
+			},
 			keyframes: {
 				"fade-in": {
 					"0%": {

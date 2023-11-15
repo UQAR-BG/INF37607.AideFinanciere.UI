@@ -15,7 +15,9 @@
 		/>
 		<button class="submit-btn" type="submit">Soumettre</button>
 		<span class="text-xs form-span"
-			>Besoin d'un compte ?<router-link to="/inscription" class="text-xs form-link"
+			>Besoin d'un compte ?<router-link
+				to="/inscription"
+				class="text-xs text-font-link ml-2 font-normal underline"
 				>Aller à l'inscription</router-link
 			></span
 		>

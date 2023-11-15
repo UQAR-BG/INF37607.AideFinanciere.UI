@@ -1,34 +1,30 @@
 <template>
-	<nav class="navbar">
+	<nav class="w-full bg-navbar">
 		<div class="m-auto max-w-5xl">
-			<div class="navlinks">
-				<NuxtLink
+			<div class="flex content-start items-center px-4">
+				<NavbarLink
 					id="link-to-dossier"
-					class="navlink"
-					:class="{ active: isActive(PageName.Dossier) }"
 					to="/dossier"
-					>Dossier</NuxtLink
+					:active="isActive(PageName.Dossier)"
+					>Dossier</NavbarLink
 				>
-				<NuxtLink
+				<NavbarLink
 					id="link-to-aide-financiere"
-					class="navlink"
-					:class="{ active: isActive(PageName.AideFinanciere) }"
 					to="/aide-financiere"
-					>Aide financière</NuxtLink
+					:active="isActive(PageName.AideFinanciere)"
+					>Aide financière</NavbarLink
 				>
-				<NuxtLink
+				<NavbarLink
 					id="link-to-montants"
-					class="navlink"
-					:class="{ active: isActive(PageName.Montants) }"
 					to="/montants"
-					>Montants</NuxtLink
+					:active="isActive(PageName.Montants)"
+					>Montants</NavbarLink
 				>
-				<NuxtLink
+				<NavbarLink
 					id="link-to-nouvelle-demande"
-					class="navlink"
-					:class="{ active: isActive(PageName.NouvelleDemande) }"
 					to="/nouvelle-demande"
-					>Nouvelle demande</NuxtLink
+					:active="isActive(PageName.NouvelleDemande)"
+					>Nouvelle demande</NavbarLink
 				>
 			</div>
 		</div>
