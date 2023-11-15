@@ -16,11 +16,11 @@
 </script>
 
 <template>
-	<NuxtLayout name="claim">
+	<LazyNuxtLayout name="claim">
 		<section class="main-section animate-fade-in-1">
-			<StudentInfoDemande />
+			<LazyStudentInfoDemande />
 		</section>
-	</NuxtLayout>
+	</LazyNuxtLayout>
 </template>
 
 <style scoped></style>

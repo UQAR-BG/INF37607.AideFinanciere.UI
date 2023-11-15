@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
+	ssr: true,
 	vite: {
 		vue: {
 			customElement: true
@@ -20,17 +21,30 @@ export default defineNuxtConfig({
 			{
 				autoImports: ["defineStore", "acceptHMRUpdate"]
 			}
-		]
+		],
+		"nuxt-multi-cache"
 	],
 	components: {
-		global: true,
 		dirs: ["~/components"]
+	},
+	multiCache: {
+		component: {
+			enabled: true
+		},
+		route: {
+			enabled: true
+		},
+		debug: true
 	},
 	imports: {
 		dirs: ["stores"]
 	},
 	app: {
 		layoutTransition: { name: "layout", mode: "out-in" }
+	},
+	routeRules: {
+		"/": { prerender: true },
+		"/inscription": { prerender: true }
 	},
 	runtimeConfig: {
 		public: {

@@ -1,7 +1,7 @@
 <template>
-	<NuxtLayout name="student-profile">
+	<LazyNuxtLayout name="student-profile">
 		<section class="main-section animate-fade-in-1">
-			<AppHeading v-once>Montants versés</AppHeading>
+			<RenderCacheable><AppHeading title="Montants versés" /></RenderCacheable>
 
 			<FinancialAidFilter @filtersChanged="filtersChanged" />
 			<TransitionGroup class="card-list" name="card-list" tag="div">
@@ -15,7 +15,7 @@
 				<p v-if="isEmpty">Aucun montant trouvé...</p>
 			</TransitionFade>
 		</section>
-	</NuxtLayout>
+	</LazyNuxtLayout>
 </template>
 
 <script setup lang="ts">

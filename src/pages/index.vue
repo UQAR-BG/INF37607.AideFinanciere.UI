@@ -1,9 +1,9 @@
 <template>
 	<NuxtLayout name="default">
 		<section class="form-section animate-fade-in-1">
-			<AppHeading>Identification</AppHeading>
+			<RenderCacheable><AppHeading title="Identification" /></RenderCacheable>
 
-			<LoginForm />
+			<LazyLoginForm />
 		</section>
 	</NuxtLayout>
 </template>

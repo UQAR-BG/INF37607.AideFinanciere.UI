@@ -1,7 +1,9 @@
 <template>
-	<NuxtLayout name="student-profile">
+	<LazyNuxtLayout name="student-profile">
 		<section class="main-section animate-fade-in-1">
-			<AppHeading v-once>Calcul de l'aide financière</AppHeading>
+			<RenderCacheable
+				><AppHeading title="Calcul de l'aide financière"
+			/></RenderCacheable>
 
 			<DataGroup
 				label="Total des prêts versés"
@@ -14,7 +16,7 @@
 				:data="grantSumFormatted"
 			/>
 		</section>
-	</NuxtLayout>
+	</LazyNuxtLayout>
 </template>
 
 <script setup lang="ts">

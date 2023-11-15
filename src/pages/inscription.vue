@@ -1,11 +1,11 @@
 <template>
-	<NuxtLayout name="default">
+	<LazyNuxtLayout name="default">
 		<section class="form-section animate-fade-in-1">
-			<AppHeading v-once>Inscription</AppHeading>
+			<RenderCacheable><AppHeading title="Inscription" /></RenderCacheable>
 
-			<SignupForm />
+			<LazySignupForm />
 		</section>
-	</NuxtLayout>
+	</LazyNuxtLayout>
 </template>
 
 <script setup lang="ts">

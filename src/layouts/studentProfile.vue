@@ -7,6 +7,8 @@
 			<slot />
 		</main>
 
-		<TheFooter v-once />
+		<RenderCacheable>
+			<TheFooter />
+		</RenderCacheable>
 	</div>
 </template>

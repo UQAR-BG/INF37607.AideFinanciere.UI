@@ -7,7 +7,9 @@
 			<slot />
 		</main>
 
-		<AppSocials />
-		<TheFooter />
+		<RenderCacheable>
+			<AppSocials />
+			<TheFooter />
+		</RenderCacheable>
 	</div>
 </template>

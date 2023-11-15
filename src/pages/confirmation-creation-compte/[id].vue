@@ -1,5 +1,5 @@
 <template>
-	<NuxtLayout name="default">
+	<LazyNuxtLayout name="default">
 		<section class="main-section animate-fade-in-1">
 			<h2 class="second-heading">{{ message }}</h2>
 			<DataGroup
@@ -7,11 +7,13 @@
 				id="codePermanent"
 				:data="codePermanent"
 			/>
-			<NuxtLink to="/" class="text-font-link ml-2 font-normal underline"
-				>Retour à l'identification</NuxtLink
-			>
+			<RenderCacheable>
+				<NuxtLink to="/" class="text-font-link ml-2 font-normal underline"
+					>Retour à l'identification</NuxtLink
+				>
+			</RenderCacheable>
 		</section>
-	</NuxtLayout>
+	</LazyNuxtLayout>
 </template>
 
 <script setup lang="ts">
