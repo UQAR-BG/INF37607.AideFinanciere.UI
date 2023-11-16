@@ -1,16 +1,14 @@
 <template>
-	<div class="card">
-		<div class="card-header">
-			<span class="card-label">Demande #{{ montant.claimId }}</span>
+	<div
+		class="mb-8 py-8 px-12 bg-main rounded-md border border-solid border-font-dark/[.3] shadow-md shadow-font-dark/[.5]"
+	>
+		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
+			<span>Demande #{{ montant.claimId }}</span>
 		</div>
-		<div class="card-body">
-			<span class="card-label"
-				>Date de versement: {{ date.format(montant.date) }}</span
-			>
-			<span class="card-label">Type: {{ formatType(montant.type) }}</span>
-			<span class="card-label"
-				>Montant versé: {{ currency.format(montant.amount) }}</span
-			>
+		<div class="flex justify-between items-center mt-4">
+			<span>Date de versement: {{ date.format(montant.date) }}</span>
+			<span>Type: {{ formatType(montant.type) }}</span>
+			<span>Montant versé: {{ currency.format(montant.amount) }}</span>
 		</div>
 	</div>
 </template>

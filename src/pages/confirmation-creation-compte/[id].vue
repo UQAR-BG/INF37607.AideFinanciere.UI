@@ -1,7 +1,7 @@
 <template>
 	<LazyNuxtLayout name="default">
-		<section class="main-section animate-fade-in-1">
-			<h2 class="second-heading">{{ message }}</h2>
+		<section class="flex flex-col mb-12 animate-fade-in-1">
+			<AppSecondHeading :title="message" />
 			<DataGroup
 				label="Votre code permanent:"
 				id="codePermanent"

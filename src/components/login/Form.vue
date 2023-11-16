@@ -1,5 +1,5 @@
 <template>
-	<form class="form half" @submit.prevent="onSubmit">
+	<form class="form w-2/4" @submit.prevent="onSubmit">
 		<InputGroup
 			type="text"
 			label="Code Permanent"
@@ -13,8 +13,13 @@
 			id="password"
 			:errorMessage="errors.password"
 		/>
-		<button class="submit-btn" type="submit">Soumettre</button>
-		<span class="text-xs form-span"
+		<button
+			class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
+			type="submit"
+		>
+			Soumettre
+		</button>
+		<span class="text-xs block text-end"
 			>Besoin d'un compte ?<router-link
 				to="/inscription"
 				class="text-xs text-font-link ml-2 font-normal underline"

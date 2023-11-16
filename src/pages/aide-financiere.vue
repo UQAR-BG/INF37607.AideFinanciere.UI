@@ -1,6 +1,6 @@
 <template>
 	<LazyNuxtLayout name="student-profile">
-		<section class="main-section animate-fade-in-1">
+		<section class="flex flex-col mb-12 animate-fade-in-1">
 			<RenderCacheable
 				><AppHeading title="Calcul de l'aide financière"
 			/></RenderCacheable>

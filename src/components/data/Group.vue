@@ -1,7 +1,7 @@
 <template>
-	<div class="data-group">
+	<div class="flex flex-col mb-6">
 		<InputLabel :label="label" :id="id" />
-		<span class="data">{{ data }}</span>
+		<span class="font-bold">{{ data }}</span>
 	</div>
 </template>
 

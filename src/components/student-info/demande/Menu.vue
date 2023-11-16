@@ -31,10 +31,3 @@
 		emit("firstPartValidated", false);
 	};
 </script>
-
-<style>
-	.link-btn {
-		color: blue;
-		text-decoration: underline;
-	}
-</style>

@@ -1,10 +1,10 @@
 <template>
-	<form class="filter-form" @submit.prevent="">
+	<form class="flex justify-end items-center gap-x-4" @submit.prevent="">
 		<label
 			class="select after:content-['\25BC'] after:absolute after:top-4 after:right-4 after:pointer-events-none after:transition-all after:duration-300 after:ease-in hover:after:animate-after-bounce hover:after:text-brand"
 		>
 			<select
-				class="filter"
+				class="basis-4 p-4 cursor-pointer bg-transparent border-none"
 				name="year"
 				id="year"
 				@change="onSelectChange"
@@ -19,7 +19,7 @@
 			class="select after:content-['\25BC'] after:absolute after:top-4 after:right-4 after:pointer-events-none after:transition-all after:duration-300 after:ease-in hover:after:animate-after-bounce hover:after:text-brand"
 		>
 			<select
-				class="filter"
+				class="basis-4 p-4 cursor-pointer bg-transparent border-none"
 				name="type"
 				id="type"
 				@change="onSelectChange"

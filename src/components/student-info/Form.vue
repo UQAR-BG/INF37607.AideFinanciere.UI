@@ -5,7 +5,9 @@
 			id="codePermanent"
 			:data="studentInfo?.codePermanent"
 		/>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<DataGroup
 				label="Numéro d'assurance sociale"
 				id="nas"
@@ -18,8 +20,10 @@
 			/>
 		</Block>
 	</section>
-	<form class="form full" @submit.prevent="onSubmit">
-		<Block class="full inline">
+	<form class="form w-full" @submit.prevent="onSubmit">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Prénom"
@@ -35,7 +39,9 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Numéro de téléphone"
@@ -51,7 +57,7 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full">
+		<Block class="w-full">
 			<InputGroup
 				type="text"
 				label="Adresse de correspondance"
@@ -61,7 +67,7 @@
 			/>
 		</Block>
 		<button
-			class="submit-btn"
+			class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
 			type="button"
 			v-if="disabled"
 			@click="$emit('toggleMode')"
@@ -69,10 +75,19 @@
 			Modifier
 		</button>
 		<div class="btn-group" v-if="!disabled">
-			<button class="cancel-btn" type="button" @click="$emit('toggleMode')">
+			<button
+				class="text-font-dark/[.9] border border-solid border-cancel-border bg-cancel py-1.5 px-3 mr-4 transition-all duration-200 hover:bg-cancel-hover"
+				type="button"
+				@click="$emit('toggleMode')"
+			>
 				Annuler
 			</button>
-			<button class="submit-btn" type="submit">Soumettre</button>
+			<button
+				class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
+				type="submit"
+			>
+				Soumettre
+			</button>
 		</div>
 	</form>
 </template>

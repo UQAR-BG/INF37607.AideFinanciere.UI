@@ -1,16 +1,18 @@
 <template>
 	<form
-		class="form full"
+		class="form w-full"
 		@submit.prevent="onSubmit"
 		@ResquetInWork="useResquetInWork"
 	>
 		<!-- Identité de l’étudiant -->
-		<div class="card-header">
-			<span class="card-label">Identité</span>
+		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
+			<span>Identité</span>
 		</div>
-		<div class="card-body">
+		<div class="flex justify-between items-center mt-4">
 			<section>
-				<Block class="full inline">
+				<Block
+					class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+				>
 					<DataGroup
 						label="Prénom"
 						id="firstname"
@@ -30,7 +32,9 @@
 			</section>
 		</div>
 
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Numéro de téléphone"
@@ -46,7 +50,9 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Adresse de courriel"
@@ -63,7 +69,9 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Citoyenneté"
@@ -79,7 +87,9 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Date d’obtention du statut de résident permanent ou de réfugié"
@@ -97,12 +107,14 @@
 		</Block>
 
 		<!-- Renseignement scolaire -->
-		<div class="card-header">
-			<span class="card-label">Renseignement scolaire</span>
+		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
+			<span>Renseignement scolaire</span>
 		</div>
-		<div class="card-body"></div>
+		<div class="flex justify-between items-center mt-4"></div>
 
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Nom de l'établissement"
@@ -118,7 +130,9 @@
 				:disabled="disabled"
 			/>
 		</Block>
-		<Block class="full inline">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
 			<InputGroup
 				type="text"
 				label="Code du programme "
@@ -136,15 +150,19 @@
 		</Block>
 
 		<!-- Situation de l’étudiant -->
-		<div class="card-header">
-			<span class="card-label">Situation de l’étudiant</span>
+		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
+			<span>Situation de l’étudiant</span>
 		</div>
-		<div class="card-body"></div>
+		<div class="flex justify-between items-center mt-4"></div>
 
-		<Block class="full inline">
-			<label class="select">
+		<Block
+			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
+		>
+			<label
+				class="select after:content-['\25BC'] after:absolute after:top-4 after:right-4 after:pointer-events-none after:transition-all after:duration-300 after:ease-in hover:after:animate-after-bounce hover:after:text-brand"
+			>
 				<select
-					class="filter"
+					class="basis-4 p-4 cursor-pointer bg-transparent border-none"
 					name="maritalStatus"
 					id="maritalStatus"
 					@change="onSelectChange"
@@ -167,11 +185,11 @@
 		</Block>
 
 		<!-- Ressources financières -->
-		<div class="card-header">
-			<span class="card-label">Ressources financières</span>
+		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
+			<span>Ressources financières</span>
 		</div>
-		<div class="card-body"></div>
-		<Block class="half">
+		<div class="flex justify-between items-center mt-4"></div>
+		<Block class="w-2/4">
 			<InputGroup
 				type="text"
 				label="Revenu total brute"
@@ -181,9 +199,26 @@
 		</Block>
 
 		<div class="btn-group">
-			<button class="cancel-btn" type="submit" @click="cancel">Annuler</button>
-			<button class="submit-btn" type="submit" @click="save">Sauvegarder</button>
-			<button class="submit-btn" type="submit">Soumettre</button>
+			<button
+				class="text-font-dark/[.9] border border-solid border-cancel-border bg-cancel py-1.5 px-3 mr-4 transition-all duration-200 hover:bg-cancel-hover"
+				type="submit"
+				@click="cancel"
+			>
+				Annuler
+			</button>
+			<button
+				class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
+				type="submit"
+				@click="save"
+			>
+				Sauvegarder
+			</button>
+			<button
+				class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
+				type="submit"
+			>
+				Soumettre
+			</button>
 		</div>
 	</form>
 </template>

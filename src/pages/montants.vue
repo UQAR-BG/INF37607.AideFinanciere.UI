@@ -1,10 +1,10 @@
 <template>
 	<LazyNuxtLayout name="student-profile">
-		<section class="main-section animate-fade-in-1">
+		<section class="flex flex-col mb-12 animate-fade-in-1">
 			<RenderCacheable><AppHeading title="Montants versés" /></RenderCacheable>
 
 			<FinancialAidFilter @filtersChanged="filtersChanged" />
-			<TransitionGroup class="card-list" name="card-list" tag="div">
+			<TransitionGroup class="mt-8" name="card-list" tag="div">
 				<FinancialAidDetails
 					v-for="montant in filteredFinancialAids"
 					:montant="montant"

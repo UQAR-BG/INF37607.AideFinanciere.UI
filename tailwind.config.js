@@ -60,7 +60,8 @@ module.exports = {
 			heading: "#223654"
 		},
 		fontFamily: {
-			sans: ["Roboto", "Helvetica Neue", "sans-serif"]
+			sans: ["Roboto", "Helvetica Neue", "sans-serif"],
+			"second-heading": ["Open Sans", "sans-serif"]
 		},
 		borderRadius: {
 			none: "0",

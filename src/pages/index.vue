@@ -1,6 +1,6 @@
 <template>
 	<NuxtLayout name="default">
-		<section class="form-section animate-fade-in-1">
+		<section class="flex flex-col mb-12 animate-fade-in-1">
 			<RenderCacheable><AppHeading title="Identification" /></RenderCacheable>
 
 			<LazyLoginForm />
