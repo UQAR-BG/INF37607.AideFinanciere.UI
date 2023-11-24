@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
 	const authStore = useAuthStore();
 
-	if (!authStore.isSignedIn) {
-		return navigateTo("/");
+	if (to.path === "/" && authStore.isSignedIn) {
+		return navigateTo("/dossier");
 	}
 });

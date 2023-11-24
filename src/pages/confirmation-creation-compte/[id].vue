@@ -23,7 +23,8 @@
 		meta: {
 			title: "Inscription complétée",
 			navOrder: 3
-		}
+		},
+		middleware: ["auth"]
 	});
 
 	useHead({

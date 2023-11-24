@@ -31,7 +31,8 @@
 		meta: {
 			title: "Calcul de l'aide financière",
 			navOrder: 4
-		}
+		},
+		middleware: ["auth"]
 	});
 
 	useHead({

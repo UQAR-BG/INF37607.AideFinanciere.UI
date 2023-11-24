@@ -1,34 +1,35 @@
 import { loginUserFn } from "@/api/authApi";
-import type { LoginInput } from "@/types/auth/login";
-import * as Toast from "mosha-vue-toastify";
+import type { LoginInput, LoginResponse } from "@/types/auth/login";
 import { useMutation, useQueryClient } from "@tanstack/vue-query";
+import { toast, type ToastOptions } from "vue3-toastify";
 
 export const useLogin = () => {
 	const queryClient = useQueryClient();
 	const router = useRouter();
+	const authStore = useAuthStore();
 
 	const loginMutation = useMutation({
 		mutationFn: (credentials: LoginInput) => loginUserFn(credentials),
 		onError: (error) => {
 			if (Array.isArray(error as any)) {
 				(error as any).forEach((el: any) =>
-					Toast.createToast(el.message, {
-						position: "top-right",
-						type: "warning"
-					})
+					toast(el.message, {
+						autoClose: 3000,
+						position: toast.POSITION.TOP_RIGHT,
+						type: "error"
+					} as ToastOptions)
 				);
 			} else {
-				Toast.createToast((error as any).message, {
-					position: "top-right",
-					type: "danger"
-				});
+				toast("Codes d'accès invalides", {
+					autoClose: 3000,
+					position: toast.POSITION.TOP_RIGHT,
+					type: "error"
+				} as ToastOptions);
 			}
 		},
-		onSuccess: () => {
-			queryClient.refetchQueries({ queryKey: ["authUser"] });
-			Toast.createToast("Indentification réussie", {
-				position: "top-right"
-			});
+		onSuccess: (data: LoginResponse) => {
+			authStore.setAuthUser(data);
+
 			router.push({ name: "dossier" });
 		}
 	});

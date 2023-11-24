@@ -19,7 +19,8 @@
 		meta: {
 			title: "Dossier étudiant",
 			navOrder: 3
-		}
+		},
+		middleware: ["auth"]
 	});
 
 	useHead({

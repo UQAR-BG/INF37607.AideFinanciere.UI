@@ -14,8 +14,14 @@
 					<ul
 						class="flex flex-col flex-wrap items-start justify-around gap-y-1.5 mr-10 list-none"
 					>
-						<HeaderLink to="/">Accueil</HeaderLink>
-						<HeaderLink to="/" v-if="isSignedIn">Déconnexion</HeaderLink>
+						<HeaderLink to="/" v-if="!isSignedIn">Accueil</HeaderLink>
+						<a
+							href="#"
+							v-if="isSignedIn"
+							@click="logout"
+							class="text-sm no-underline text-font-pale/[.9] transition-all duration-200 hover:cursor-pointer hover:underline hover:text-font-pale"
+							>Déconnexion</a
+						>
 						<HeaderLink to="/inscription">Inscription</HeaderLink>
 					</ul>
 				</nav>
@@ -28,5 +34,11 @@
 	import { useAuthStore } from "@/stores/authStore";
 
 	const store = useAuthStore();
+	const router = useRouter();
+
 	const isSignedIn = store.isSignedIn;
+
+	const logout = () => {
+		store.logout();
+	};
 </script>

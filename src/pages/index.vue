@@ -15,7 +15,8 @@
 		meta: {
 			title: "Aide financière aux études ",
 			navOrder: 1
-		}
+		},
+		middleware: ["root"]
 	});
 
 	useHead({

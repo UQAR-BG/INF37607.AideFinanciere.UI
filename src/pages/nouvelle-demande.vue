@@ -7,7 +7,8 @@
 		meta: {
 			title: "Nouvelle demande",
 			navOrder: 1
-		}
+		},
+		middleware: ["auth"]
 	});
 
 	useHead({

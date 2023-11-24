@@ -44,18 +44,21 @@
 	const { loginMutation } = useLogin();
 	const { authUserQuery } = useAuth();
 
+	const errorMessage = ref("");
+
 	const onSubmit = handleSubmit((values) => {
 		loginMutation.mutate({
 			codePermanent: values.codePermanent,
 			password: values.password
 		});
+
 		resetForm();
 	});
 
-	onBeforeUpdate(() => {
-		if (authUserQuery.isSuccess.value) {
-			const authUser = Object.assign({}, authUserQuery.data.value?.data.user);
-			authStore.setAuthUser(authUser);
-		}
-	});
+	// onBeforeUpdate(() => {
+	// 	if (authUserQuery.isSuccess.value) {
+	// 		const authUser = Object.assign({}, authUserQuery.data.value?.data.user);
+	// 		authStore.setAuthUser(authUser);
+	// 	}
+	// });
 </script>

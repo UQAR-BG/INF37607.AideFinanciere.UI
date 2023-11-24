@@ -24,6 +24,9 @@ export default defineNuxtConfig({
 		],
 		"nuxt-multi-cache"
 	],
+	pinia: {
+		storesDirs: ["~/stores/**"]
+	},
 	components: {
 		dirs: ["~/components"]
 	},

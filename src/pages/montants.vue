@@ -29,7 +29,8 @@
 		meta: {
 			title: "Montants versés",
 			navOrder: 5
-		}
+		},
+		middleware: ["auth"]
 	});
 
 	useHead({

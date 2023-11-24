@@ -4,7 +4,6 @@ import {
 	validateStudentInfo
 } from "@/api/studentApi";
 import type { SignupStudentInfo, Student } from "@/types/student";
-import * as Toast from "mosha-vue-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/vue-query";
 
 export const useStudent = () => {
@@ -24,26 +23,26 @@ export const useStudent = () => {
 
 	const studentInfoMutation = useMutation({
 		mutationFn: (studentInfo: Student) => updateStudentInfo(studentInfo),
-		onError: (error) => {
-			if (Array.isArray(error as any)) {
-				(error as any).forEach((el: any) =>
-					Toast.createToast(el.message, {
-						position: "top-right",
-						type: "warning"
-					})
-				);
-			} else {
-				Toast.createToast((error as any).message, {
-					position: "top-right",
-					type: "danger"
-				});
-			}
-		},
+		// onError: (error) => {
+		// 	if (Array.isArray(error as any)) {
+		// 		(error as any).forEach((el: any) =>
+		// 			Toast.createToast(el.message, {
+		// 				position: "top-right",
+		// 				type: "warning"
+		// 			})
+		// 		);
+		// 	} else {
+		// 		Toast.createToast((error as any).message, {
+		// 			position: "top-right",
+		// 			type: "danger"
+		// 		});
+		// 	}
+		// },
 		onSuccess: () => {
 			queryClient.refetchQueries({ queryKey: ["studentInfo"] });
-			Toast.createToast("Renseignements personnels modifiés avec succès", {
-				position: "top-right"
-			});
+			// Toast.createToast("Renseignements personnels modifiés avec succès", {
+			// 	position: "top-right"
+			// });
 		}
 	});
 

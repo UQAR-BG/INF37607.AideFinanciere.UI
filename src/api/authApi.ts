@@ -8,7 +8,7 @@ import { useHttp } from "@/composables/useHttp";
 
 export const refreshAccessTokenFn = async () => {
 	const response = await useHttp().httpService.get<LoginResponse>(
-		"auth/refresh"
+		"authorization/refresh"
 	);
 	return response.data;
 };
@@ -34,7 +34,7 @@ export const signUpUserFn = async (
 
 export const loginUserFn = async (user: LoginInput) => {
 	const response = await useHttp().httpService.post<LoginResponse>(
-		"auth/login",
+		"authorization/login",
 		user
 	);
 	return response.data;
@@ -42,7 +42,7 @@ export const loginUserFn = async (user: LoginInput) => {
 
 export const logoutUserFn = async () => {
 	const response = await useHttp().httpService.get<GenericResponse>(
-		"auth/logout"
+		"authorization/logout"
 	);
 	return response.data;
 };

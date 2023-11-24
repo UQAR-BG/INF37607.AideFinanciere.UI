@@ -1,5 +1,14 @@
 version: "3"
 services:
+ ms-sql-server:
+  image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+  environment:
+   ACCEPT_EULA: "Y"
+   MSSQL_SA_PASSWORD: "Pa55w0rd2021"
+   MSSQL_PID: "Express"
+  ports:
+   - "1433:1433"
+
  dev-app:
   image: node:alpine
   container_name: dev-app
@@ -16,4 +25,4 @@ services:
   environment:
    HOST: 0.0.0.0
    PORT: 3001
-   NUXT_PUBLIC_API_BASE: "http://localhost:3001/api/"
+   NUXT_PUBLIC_API_BASE: "https://localhost:6001/api/"
