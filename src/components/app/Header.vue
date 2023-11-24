@@ -36,7 +36,7 @@
 	const store = useAuthStore();
 	const router = useRouter();
 
-	const isSignedIn = store.isSignedIn;
+	const isSignedIn = computed(() => store.isSignedIn);
 
 	const logout = () => {
 		store.logout();

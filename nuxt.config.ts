@@ -22,6 +22,7 @@ export default defineNuxtConfig({
 				autoImports: ["defineStore", "acceptHMRUpdate"]
 			}
 		],
+		"@pinia-plugin-persistedstate/nuxt",
 		"nuxt-multi-cache"
 	],
 	pinia: {

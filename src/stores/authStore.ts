@@ -28,5 +28,10 @@ export const useAuthStore = defineStore({
 			this.authUser = initialValues.authUser;
 			this.token = initialValues.token;
 		}
+	},
+	persist: {
+		storage: persistedState.cookiesWithOptions({
+			sameSite: "strict"
+		})
 	}
 });
