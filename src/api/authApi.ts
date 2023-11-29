@@ -40,13 +40,6 @@ export const loginUserFn = async (user: LoginInput) => {
 	return response.data;
 };
 
-export const logoutUserFn = async () => {
-	const response = await useHttp().httpService.get<GenericResponse>(
-		"authorization/logout"
-	);
-	return response.data;
-};
-
 export const getMeFn = async () => {
 	const response = await useHttp().httpService.get<UserResponse>("users/me");
 	return response.data;
