@@ -1,55 +1,38 @@
 import type {
-	SignupStudentInfo,
 	Student,
 	StudentInfoValidateResponse,
 	StudentResponse
 } from "@/types/student";
 import { useHttp } from "@/composables/useHttp";
+import type { ValidateStudentInfo } from "~/types/auth/signup";
 
 export const getStudentInfo = async (): Promise<Student> => {
-	// const response = await useHttp().httpService.get<Student>("student");
-	// return response.data;
+	const { httpService, authorizeHeader } = useHttp();
 
-	return new Promise((resolve) => {
-		resolve({
-			codePermanent: "TEST012345",
-			nas: "123 456 789",
-			birthdate: new Date().toLocaleDateString(),
-			firstname: "John",
-			lastname: "Doe",
-			address: "809 Rue du Pont",
-			phoneNumber: "418-906-8555",
-			email: "test@gmail.com"
-		});
-	});
+	const response = await httpService.get<Student>("user", authorizeHeader);
+	console.log(response.data);
+	return response.data;
 };
 
 export const updateStudentInfo = async (
 	studentInfo: Student
-): Promise<StudentResponse> => {
-	const response = await useHttp().httpService.patch<StudentResponse>(
-		"student",
-		studentInfo
+): Promise<Student> => {
+	const { httpService, authorizeHeader } = useHttp();
+
+	const response = await httpService.patch<Student>(
+		"user",
+		studentInfo,
+		authorizeHeader
 	);
 	return response.data;
 };
 
 export const validateStudentInfo = async (
-	studentInfo: SignupStudentInfo
+	studentInfo: ValidateStudentInfo
 ): Promise<StudentInfoValidateResponse> => {
-	// const response = await useHttp().httpService.post<StudentInfoValidateResponse>(
-	// 	"student/validate",
-	// 	studentInfo
-	// );
-	// return response.data;
-
-	return new Promise((resolve) => {
-		resolve({
-			status: "success",
-			message: "",
-			data: {
-				valid: true
-			}
-		});
-	});
+	const response = await useHttp().httpService.post<StudentInfoValidateResponse>(
+		"authorization/validate",
+		studentInfo
+	);
+	return response.data;
 };

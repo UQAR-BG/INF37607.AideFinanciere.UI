@@ -1,9 +1,7 @@
 /* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
-import type { GenericResponse } from "@/types/auth/generic";
 import type { LoginResponse, LoginInput } from "@/types/auth/login";
 import type { UserResponse } from "@/types/auth/user";
-import type { SignUpInput } from "@/types/auth/signup";
-import type { SignupResponse } from "@/types/student";
+import type { SignUpInput, SignupResponse } from "@/types/auth/signup";
 import { useHttp } from "@/composables/useHttp";
 
 export const refreshAccessTokenFn = async () => {
@@ -16,20 +14,11 @@ export const refreshAccessTokenFn = async () => {
 export const signUpUserFn = async (
 	user: SignUpInput
 ): Promise<SignupResponse> => {
-	// const response = await useHttp().httpService.post<GenericResponse>("auth/register", user);
-	// return response.data;
-
-	return new Promise((resolve) => {
-		resolve({
-			status: "success",
-			message: "Le compte d'étudiant a été créé avec succès",
-			data: {
-				student: {
-					codePermanent: "TEST012345"
-				}
-			}
-		});
-	});
+	const response = await useHttp().httpService.post<SignupResponse>(
+		"authorization/registration",
+		user
+	);
+	return response.data;
 };
 
 export const loginUserFn = async (user: LoginInput) => {

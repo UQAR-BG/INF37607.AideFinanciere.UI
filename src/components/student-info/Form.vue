@@ -3,7 +3,7 @@
 		<DataGroup
 			label="Code permanent"
 			id="codePermanent"
-			:data="studentInfo?.codePermanent"
+			:data="studentInfo?.permanentCode"
 		/>
 		<Block
 			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
@@ -11,12 +11,12 @@
 			<DataGroup
 				label="Numéro d'assurance sociale"
 				id="nas"
-				:data="studentInfo?.nas"
+				:data="studentInfo?.socialInsuranceNumber"
 			/>
 			<DataGroup
 				label="Date de naissance"
 				id="birthdate"
-				:data="studentInfo?.birthdate"
+				:data="studentInfo?.dateOfBirth"
 			/>
 		</Block>
 	</section>
@@ -27,15 +27,15 @@
 			<InputGroup
 				type="text"
 				label="Prénom"
-				id="firstname"
-				:errorMessage="errors.firstname"
+				id="firstName"
+				:errorMessage="errors.firstName"
 				:disabled="disabled"
 			/>
 			<InputGroup
 				type="text"
 				label="Nom"
-				id="lastname"
-				:errorMessage="errors.lastname"
+				id="lastName"
+				:errorMessage="errors.lastName"
 				:disabled="disabled"
 			/>
 		</Block>
@@ -61,8 +61,8 @@
 			<InputGroup
 				type="text"
 				label="Adresse de correspondance"
-				id="address"
-				:errorMessage="errors.address"
+				id="correspondenceAddress"
+				:errorMessage="errors.correspondenceAddress"
 				:disabled="disabled"
 			/>
 		</Block>
@@ -112,14 +112,14 @@
 
 	const { handleSubmit, errors, resetForm } = useForm({
 		validationSchema: toTypedSchema(studentInfoSchema),
-		initialValues: studentInfoQuery.data
+		initialValues: studentInfo
 	});
 
 	const onSubmit = handleSubmit((values) => {
 		studentInfoMutation.mutate({
-			firstname: values.firstname,
-			lastname: values.lastname,
-			address: values.address,
+			firstname: values.firstName,
+			lastname: values.lastName,
+			correspondenceAddress: values.correspondenceAddress,
 			phoneNumber: values.phoneNumber,
 			email: values.email
 		});

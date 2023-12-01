@@ -5,17 +5,17 @@
 				<InputGroup
 					type="text"
 					label="Numéro d’assurance sociale"
-					id="nas"
+					id="socialInsuranceNumber"
 					placeholder="012 345 678"
 					:disabled="firstPartDisabled"
-					:errorMessage="errors.nas"
+					:errorMessage="errors.socialInsuranceNumber"
 				/>
 				<InputGroup
 					type="date"
 					label="Date de naissance"
-					id="birthdate"
+					id="dateOfBirth"
 					:disabled="firstPartDisabled"
-					:errorMessage="errors.birthdate"
+					:errorMessage="errors.dateOfBirth"
 				/>
 			</Block>
 			<Block class="w-full">
@@ -54,10 +54,10 @@
 	import { useForm } from "vee-validate";
 	import { signupSchema } from "@/schemas/signupSchema";
 	import { useSignup } from "@/composables/useSignup";
-	import type { SignupStudentInfo } from "@/types/student";
+	import type { ValidateStudentInfo } from "~/types/auth/signup";
 
 	type propType = {
-		values: SignupStudentInfo;
+		values: ValidateStudentInfo;
 		firstPartDisabled: boolean;
 	};
 
@@ -72,10 +72,9 @@
 
 	const onSubmit = handleSubmit((values) => {
 		signupMutation.mutate({
-			nas: values.nas,
-			birthdate: values.birthdate,
-			password: values.password,
-			passwordConfirm: values.passwordConfirm
+			socialInsuranceNumber: values.socialInsuranceNumber,
+			dateOfBirth: values.dateOfBirth,
+			password: values.password
 		});
 
 		resetForm();

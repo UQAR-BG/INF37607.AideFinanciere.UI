@@ -3,14 +3,14 @@
 import * as zod from "zod";
 
 export const firstPartSignupSchema = zod.object({
-	nas: zod
+	socialInsuranceNumber: zod
 		.string({ required_error: "Le numéro d'assurance sociale est requis" })
 		.min(9, "Le numéro d'assurance sociale est requis")
 		.regex(
 			/^(\d{3}-\d{3}-\d{3})|(\d{3} \d{3} \d{3})|(\d{9})$/,
 			"Le format du NAS doit respecter les formes standards"
 		),
-	birthdate: zod.coerce
+	dateOfBirth: zod.coerce
 		.date({
 			required_error: "La date de naissance est requise",
 			invalid_type_error: "Le format de la date de naissance est invalide"
@@ -21,14 +21,14 @@ export const firstPartSignupSchema = zod.object({
 
 export const signupSchema = zod
 	.object({
-		nas: zod
+		socialInsuranceNumber: zod
 			.string({ required_error: "Le numéro d'assurance sociale est requis" })
 			.min(9, "Le numéro d'assurance sociale est requis")
 			.regex(
 				/^(\d{3}-\d{3}-\d{3})|(\d{3} \d{3} \d{3})|(\d{9})$/,
 				"Le format du NAS doit respecter les formes standards"
 			),
-		birthdate: zod.coerce
+		dateOfBirth: zod.coerce
 			.date({
 				required_error: "La date de naissance est requise",
 				invalid_type_error: "Le format de la date de naissance est invalide"

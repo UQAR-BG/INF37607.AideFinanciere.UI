@@ -1,13 +1,16 @@
 /* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
 
+import type { Student } from "../student";
+
 export type SignUpInput = {
-	nas: string;
-	birthdate: Date;
+	socialInsuranceNumber: string;
+	dateOfBirth: Date;
 	password: string;
-	passwordConfirm: string;
 };
 
-export type SignUpResponse = {
-	status: string;
-	message: string;
+export type ValidateStudentInfo = {
+	socialInsuranceNumber: string;
+	dateOfBirth: Date;
 };
+
+export type SignupResponse = Student;

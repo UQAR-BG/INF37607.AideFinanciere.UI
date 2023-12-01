@@ -4,15 +4,15 @@
 			<InputGroup
 				type="text"
 				label="Numéro d’assurance sociale"
-				id="nas"
+				id="socialInsuranceNumber"
 				placeholder="012 345 678"
-				:errorMessage="errors.nas"
+				:errorMessage="errors.socialInsuranceNumber"
 			/>
 			<InputGroup
 				type="date"
 				label="Date de naissance"
-				id="birthdate"
-				:errorMessage="errors.birthdate"
+				id="dateOfBirth"
+				:errorMessage="errors.dateOfBirth"
 			/>
 			<button
 				class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
@@ -48,8 +48,8 @@
 
 	const onSubmit = handleSubmit((values) => {
 		mutate({
-			nas: values.nas,
-			birthdate: values.birthdate
+			socialInsuranceNumber: values.socialInsuranceNumber,
+			dateOfBirth: values.dateOfBirth
 		});
 	});
 
@@ -60,6 +60,6 @@
 	});
 
 	watch(isError, () => {
-		errors.value.birthdate = error?.value.message;
+		errors.value.dateOfBirth = error?.value.message;
 	});
 </script>

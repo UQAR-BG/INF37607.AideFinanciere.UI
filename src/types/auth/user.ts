@@ -5,8 +5,6 @@ export type User = {
 	lastName: string;
 	email?: string;
 	id: string;
-	created_at?: string;
-	updated_at?: string;
 };
 
 export type UserResponse = {

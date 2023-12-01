@@ -1,29 +1,13 @@
 export type Student = {
-	codePermanent?: string;
+	id?: number;
+	permanentCode?: string;
 	firstname?: string;
 	lastname?: string;
-	nas?: string;
-	created_at?: string;
-	updated_at?: string;
+	socialInsuranceNumber?: string;
 	email?: string;
-	address?: string;
+	correspondenceAddress?: string;
 	phoneNumber?: string;
-	birthdate?: string;
-};
-
-export type SignupStudentInfo = {
-	nas?: string;
-	birthdate?: Date;
-	password?: string;
-	passwordConfirm?: string;
-};
-
-export type SignupResponse = {
-	status: string;
-	message: string;
-	data: {
-		student: Student;
-	};
+	dateOfBirth?: string;
 };
 
 export type StudentResponse = {
@@ -33,10 +17,4 @@ export type StudentResponse = {
 	};
 };
 
-export type StudentInfoValidateResponse = {
-	status: string;
-	message: string;
-	data: {
-		valid: boolean;
-	};
-};
+export type StudentInfoValidateResponse = boolean;
