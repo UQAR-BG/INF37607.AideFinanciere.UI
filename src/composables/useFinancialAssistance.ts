@@ -18,7 +18,7 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 
 	const allFinancialAidsQuery = useQuery({
 		queryKey: ["financialAids", codePermanent],
-		queryFn: () => getAllFinancialAids(codePermanent),
+		queryFn: () => getAllFinancialAids(),
 		enabled: codePermanent !== null,
 		staleTime: 1000 * 60 * 5,
 		retry: 3
@@ -30,7 +30,7 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		return allFinancialAidsQuery.data?.value?.filter(
 			(a) =>
 				(allTypes ? true : a.type === filters.type) &&
-				a.date.getFullYear() === filters.year
+				a.paymentDate.getFullYear() === filters.year
 		);
 	};
 

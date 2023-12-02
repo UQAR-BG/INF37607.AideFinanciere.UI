@@ -46,8 +46,7 @@ export type FinancialAid = {
 	id: number;
 	type: FinancialAidType;
 	amount: number;
-	date: Date;
-	claimId: number;
+	paymentDate: Date;
 };
 
 export type FinancialAidResponse = {
