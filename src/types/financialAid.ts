@@ -17,26 +17,23 @@ export type FinancialAidClaim = {
 	codePermanentDemandeur?: string;
 	codeEtablissement?: string;
 	codeProgramme?: string;
-	studentId?: number;
-	student?: Student;
-	nas?: string;
 	email?: string;
-	address?: string;
+	correspondenceAddress?: string;
 	firstname?: string;
 	lastname?: string;
 	phoneNumber?: string;
 	secondPhoneNumber?: string;
 	citizenship?: string;
 	immigrationCode?: string;
-	residentStatusDate?: Date;
+	dateStatus?: Date;
 	language?: string;
-	schoolName?: string;
-	schoolCode?: string;
-	programCode?: string;
-	credits?: number;
+	institutionName?: string;
+	institutionCode?: string;
+	programmeCode?: string;
+	creditsNumbers?: number;
 	maritalStatus?: string;
-	maritalStatusStartDate?: Date;
-	lastYearMainIncome?: number;
+	statusStartingDate?: Date;
+	totalGrossIncome?: number;
 	lastYearOtherIncome?: number;
 	currentYearPotentialIncome?: number;
 	status?: FinancialAidClaimStatus;
@@ -55,6 +52,10 @@ export type FinancialAidResponse = {
 		financialAid: FinancialAid;
 	};
 };
+
+export const FinancialAidTypeMap = [
+	
+]
 
 export const FinancialAidMaritalStatusFilter = [
 	"Célibataire ",

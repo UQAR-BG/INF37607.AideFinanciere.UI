@@ -5,7 +5,7 @@
 	/>
 	<StudentInfoDemandeForm
 		v-if="firstPartValidated"
-		:values="ResquetInWork"
+		:new="!continuePreviousClaim"
 		@onSecondPartCancel="onSecondPartCancel"
 		@onFormSubmit="onFormSubmit"
 	/>
@@ -15,10 +15,10 @@
 <script setup lang="ts">
 	const firstPartValidated = ref(false);
 	const formWasSubmit = ref(false);
-	let ResquetInWork;
+	const continuePreviousClaim = ref(false);
 
-	const onFirstPartValidated = (values: boolean) => {
-		ResquetInWork = values;
+	const onFirstPartValidated = (continueClaim: boolean) => {
+		continuePreviousClaim.value = continueClaim;
 		firstPartValidated.value = true;
 	};
 
@@ -31,11 +31,11 @@
 		firstPartValidated.value = false;
 	};
 
-	const emit = defineEmits(["ResquetInWork"]);
+	//const emit = defineEmits(["ResquetInWork"]);
 
-	watch(ResquetInWork, () => {
-		if (ResquetInWork) {
-			emit("ResquetInWork", ResquetInWork);
-		}
-	});
+	// watch(ResquetInWork, () => {
+	// 	if (ResquetInWork) {
+	// 		emit("ResquetInWork", ResquetInWork);
+	// 	}
+	// });
 </script>

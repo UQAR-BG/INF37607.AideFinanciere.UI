@@ -1,8 +1,8 @@
 export type Student = {
 	id?: number;
 	permanentCode?: string;
-	firstname?: string;
-	lastname?: string;
+	firstName?: string;
+	lastName?: string;
 	socialInsuranceNumber?: string;
 	email?: string;
 	correspondenceAddress?: string;

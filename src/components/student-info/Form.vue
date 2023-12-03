@@ -17,6 +17,7 @@
 				label="Date de naissance"
 				id="birthdate"
 				:data="studentInfo?.dateOfBirth"
+				:isDate="true"
 			/>
 		</Block>
 	</section>
@@ -117,8 +118,8 @@
 
 	const onSubmit = handleSubmit((values) => {
 		studentInfoMutation.mutate({
-			firstname: values.firstName,
-			lastname: values.lastName,
+			firstName: values.firstName,
+			lastName: values.lastName,
 			correspondenceAddress: values.correspondenceAddress,
 			phoneNumber: values.phoneNumber,
 			email: values.email

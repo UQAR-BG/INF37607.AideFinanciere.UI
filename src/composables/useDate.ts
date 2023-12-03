@@ -13,10 +13,19 @@ export const useDate = (locales: Locales = Locales.frCA) => {
 		value: Date,
 		options: Intl.DateTimeFormatOptions = defaultOptions
 	) => {
-		return value.toLocaleDateString(params.locales, options);
+		return value instanceof Date
+			? value.toLocaleDateString(params.locales, options)
+			: new Date(value).toLocaleDateString(params.locales, options);
+	};
+
+	const getFullYear = (value: Date) => {
+		return value instanceof Date
+			? value.getFullYear()
+			: new Date(value).getFullYear();
 	};
 
 	return {
-		format
+		format,
+		getFullYear
 	};
 };

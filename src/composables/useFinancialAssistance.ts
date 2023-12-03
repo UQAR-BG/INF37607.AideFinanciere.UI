@@ -12,9 +12,12 @@ import {
 	type FinancialAidClaim
 } from "@/types/financialAid";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/vue-query";
+import { toast } from "vue3-toastify";
 
 export const useFinancialAssistance = (codePermanent?: string) => {
 	const queryClient = useQueryClient();
+	const { getFullYear } = useDate();
+	const router = useRouter();
 
 	const allFinancialAidsQuery = useQuery({
 		queryKey: ["financialAids", codePermanent],
@@ -30,13 +33,13 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		return allFinancialAidsQuery.data?.value?.filter(
 			(a) =>
 				(allTypes ? true : a.type === filters.type) &&
-				a.paymentDate.getFullYear() === filters.year
+				getFullYear(a.paymentDate) === filters.year
 		);
 	};
 
 	const activeFinancialAidClaimsQuery = useQuery({
 		queryKey: ["activeClaims"],
-		queryFn: () => getActiveFinancialAidClaims(codePermanent),
+		queryFn: () => getActiveFinancialAidClaims(),
 		enabled: codePermanent !== null,
 		staleTime: 1000 * 60 * 5,
 		retry: 3
@@ -44,35 +47,42 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 
 	const financialAidClaimMutation = useMutation({
 		mutationFn: (claim: FinancialAidClaim) => updateFinancialAidClaim(claim),
-		// onError: (error) => {
-		// 	if (Array.isArray(error as any)) {
-		// 		(error as any).forEach((el: any) =>
-		// 			Toast.createToast(el.message, {
-		// 				position: "top-right",
-		// 				type: "warning"
-		// 			})
-		// 		);
-		// 	} else {
-		// 		Toast.createToast((error as any).message, {
-		// 			position: "top-right",
-		// 			type: "danger"
-		// 		});
-		// 	}
-		// },
+		onError: (error) => {
+			if (Array.isArray(error as any)) {
+				(error as any).forEach((el: any) =>
+					toast.warn(el.message, {
+						position: toast.POSITION.TOP_RIGHT
+					})
+				);
+			} else {
+				toast.error((error as any).response.data.message, {
+					position: toast.POSITION.TOP_RIGHT
+				});
+			}
+		},
 		onSuccess: () => {
 			queryClient.refetchQueries({ queryKey: ["activeClaims"] });
-			// Toast.createToast("Demande d'aide financière modifiée avec succès", {
-			// 	position: "top-right"
-			// });
+			toast.success("Demande d'aide financière modifiée avec succès", {
+				position: toast.POSITION.TOP_RIGHT
+			});
 		}
 	});
 
 	const completeClaimMutation = useMutation({
-		mutationFn: (claimId: number) => completeFinancialAidClaim(claimId)
+		mutationFn: (claim: FinancialAidClaim) => completeFinancialAidClaim(claim),
+		onSuccess: () => {
+			router.push("/dossier");
+		}
 	});
 
 	const cancelClaimMutation = useMutation({
-		mutationFn: (claimId: number) => cancelFinancialAidClaim(claimId)
+		mutationFn: () => cancelFinancialAidClaim(),
+		onSuccess: () => {
+			queryClient.refetchQueries({ queryKey: ["activeClaims"] });
+			toast.success("Demande d'aide financière annulée avec succès", {
+				position: toast.POSITION.TOP_RIGHT
+			});
+		}
 	});
 
 	const grants = computed<FinancialAid[]>(() =>
@@ -95,9 +105,10 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		loans.value?.reduce((a, c) => a + c.amount, 0)
 	);
 
-	const isActiveFinancialAidClaim = computed<boolean>(
-		() => activeFinancialAidClaimsQuery.data?.value.length > 0
-	);
+	const isActiveFinancialAidClaim = computed<boolean>(() => {
+		console.log(activeFinancialAidClaimsQuery.data?.value);
+		return activeFinancialAidClaimsQuery.data?.value.length > 0;
+	});
 
 	const pendingFinancialAidClaim = computed<FinancialAidClaim>(
 		() => activeFinancialAidClaimsQuery.data?.value[0]

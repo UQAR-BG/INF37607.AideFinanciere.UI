@@ -1,5 +1,5 @@
 <template>
-	<template v-if="hasDemande">
+	<template v-if="isPending">
 		<p>Vous avez déjà une demande d'aide financière en cours.</p>
 		<p class="mt-4">
 			Vous pouvez la continuer
@@ -17,11 +17,11 @@
 </template>
 
 <script setup lang="ts">
-	// TODO: add querry to check if a fiancial resquet existe to update state of hasDemande
-
-	let hasDemande = false;
+	const { pendingFinancialAidClaim } = useFinancialAssistance();
 
 	const emit = defineEmits(["firstPartValidated"]);
+
+	const isPending = computed(() => pendingFinancialAidClaim.value);
 
 	const continuer = () => {
 		emit("firstPartValidated", true);

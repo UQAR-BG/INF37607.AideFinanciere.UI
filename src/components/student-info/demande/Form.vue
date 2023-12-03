@@ -1,9 +1,5 @@
 <template>
-	<form
-		class="form w-full"
-		@submit.prevent="onSubmit"
-		@ResquetInWork="useResquetInWork"
-	>
+	<form class="form w-full" @submit.prevent="onSubmit">
 		<!-- Identité de l’étudiant -->
 		<div class="pb-2 border-b border-solid border-font-dark/[.3] font-bold">
 			<span>Identité</span>
@@ -13,21 +9,13 @@
 				<Block
 					class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
 				>
-					<DataGroup
-						label="Prénom"
-						id="firstname"
-						:data="studentInfoQuery.data?.value?.firstname"
-					/>
-					<DataGroup
-						label="Nom"
-						id="lastname"
-						:data="studentInfoQuery.data?.value?.lastname"
-					/>
+					<DataGroup label="Prénom" id="firstName" :data="studentInfo?.firstName" />
+					<DataGroup label="Nom" id="lastName" :data="studentInfo?.lastName" />
 				</Block>
 				<DataGroup
 					label="Numéro d'assurance sociale"
-					id="nas"
-					:data="studentInfoQuery.data?.value?.nas"
+					id="socialInsuranceNumber"
+					:data="studentInfo?.socialInsuranceNumber"
 				/>
 			</section>
 		</div>
@@ -64,8 +52,8 @@
 			<InputGroup
 				type="text"
 				label="Adresse de correspondance"
-				id="address"
-				:errorMessage="errors.address"
+				id="correspondenceAddress"
+				:errorMessage="errors.correspondenceAddress"
 				:disabled="disabled"
 			/>
 		</Block>
@@ -91,10 +79,10 @@
 			class="w-full flex content-start items-center gap-x-12 [&>*]:basis-2/4"
 		>
 			<InputGroup
-				type="text"
+				type="date"
 				label="Date d’obtention du statut de résident permanent ou de réfugié"
-				id="residentStatusDate"
-				:errorMessage="errors.residentStatusDate"
+				id="dateStatus"
+				:errorMessage="errors.dateStatus"
 				:disabled="disabled"
 			/>
 			<InputGroup
@@ -118,15 +106,15 @@
 			<InputGroup
 				type="text"
 				label="Nom de l'établissement"
-				id="schoolName"
-				:errorMessage="errors.schoolName"
+				id="institutionName"
+				:errorMessage="errors.institutionName"
 				:disabled="disabled"
 			/>
 			<InputGroup
 				type="text"
 				label="Code de l'établissement"
-				id="codeEtablissement"
-				:errorMessage="errors.codeEtablissement"
+				id="institutionCode"
+				:errorMessage="errors.institutionCode"
 				:disabled="disabled"
 			/>
 		</Block>
@@ -136,15 +124,15 @@
 			<InputGroup
 				type="text"
 				label="Code du programme "
-				id="codeProgramme"
-				:errorMessage="errors.codeProgramme"
+				id="programmeCode"
+				:errorMessage="errors.programmeCode"
 				:disabled="disabled"
 			/>
 			<InputGroup
 				type="text"
 				label="Nombre de crédits"
-				id="credits"
-				:errorMessage="errors.credits"
+				id="creditsNumbers"
+				:errorMessage="errors.creditsNumbers"
 				:disabled="disabled"
 			/>
 		</Block>
@@ -165,7 +153,6 @@
 					class="basis-4 p-4 cursor-pointer bg-transparent border-none"
 					name="maritalStatus"
 					id="maritalStatus"
-					@change="onSelectChange"
 					v-model="maritalStatus"
 				>
 					<option
@@ -179,8 +166,8 @@
 			<InputGroup
 				type="date"
 				label="Date de début de l'état matrimonial "
-				id="maritalStatusStartDate"
-				:errorMessage="errors.maritalStatusStartDate"
+				id="statusStartingDate"
+				:errorMessage="errors.statusStartingDate"
 			/>
 		</Block>
 
@@ -193,22 +180,22 @@
 			<InputGroup
 				type="text"
 				label="Revenu total brute"
-				id="lastYearMainIncome"
-				:errorMessage="errors.lastYearMainIncome"
+				id="totalGrossIncome"
+				:errorMessage="errors.totalGrossIncome"
 			/>
 		</Block>
 
 		<div class="btn-group">
 			<button
 				class="text-font-dark/[.9] border border-solid border-cancel-border bg-cancel py-1.5 px-3 mr-4 transition-all duration-200 hover:bg-cancel-hover"
-				type="submit"
+				type="button"
 				@click="cancel"
 			>
 				Annuler
 			</button>
 			<button
 				class="text-font-pale/[.9] border border-solid border-submit-border bg-submit py-1.5 px-3 transition-all duration-200 hover:bg-submit-hover"
-				type="submit"
+				type="button"
 				@click="save"
 			>
 				Sauvegarder
@@ -228,55 +215,88 @@
 	import { useStudent } from "@/composables/useStudent";
 	import {
 		FinancialAidMaritalStatusFilter,
-		defaultValues
+		type FinancialAidClaim
 	} from "@/types/financialAid";
-	import { claimSchema } from "~/schemas/claimSchema";
 
-	defineProps({
+	const props = defineProps({
 		disabled: {
 			type: Boolean,
 			default: false
+		},
+		new: {
+			type: Boolean,
+			default: true
 		}
 	});
 
-	const emit = defineEmits([
-		"selectChoice",
-		"UseResquetInWork",
-		"onSecondPartCancel",
-		"onFormSubmit"
-	]);
+	// const emit = defineEmits([
+	// 	"selectChoice",
+	// 	"UseResquetInWork",
+	// 	"onSecondPartCancel",
+	// 	"onFormSubmit"
+	// ]);
 
-	let DoesUseResquetInWork;
+	// let DoesUseResquetInWork;
 
-	const useResquetInWork = (values: boolean) => {
-		DoesUseResquetInWork = values;
-	};
-
-	// TODO: Ask server of info
+	// const useResquetInWork = (values: boolean) => {
+	// 	DoesUseResquetInWork = values;
+	// };
 
 	const { studentInfoQuery } = useStudent();
+	const studentInfo = computed(() => studentInfoQuery.data?.value);
 
-	const onSelectChange = () => {
-		emit("selectChoice", values);
-	};
+	const {
+		pendingFinancialAidClaim,
+		completeClaimMutation,
+		financialAidClaimMutation,
+		cancelClaimMutation
+	} = useFinancialAssistance();
 
-	const { values, handleSubmit, errors } = useForm({
-		validationSchema: claimSchema,
-		initialValues: defaultValues
+	// const onSelectChange = () => {
+	// 	emit("selectChoice", values);
+	// };
+
+	const { values, handleSubmit, errors, resetForm } = useForm({
+		initialValues: props.new
+			? { maritalStatus: "Célibataire " }
+			: pendingFinancialAidClaim.value
 	});
 
 	const { value: maritalStatus } = useField("maritalStatus");
 
+	const router = useRouter();
+
 	const cancel = () => {
-		emit("onSecondPartCancel", false);
+		cancelClaimMutation.mutate();
+
+		router.push("/dossier");
 	};
 
-	// TODO
 	const save = () => {
-		emit("onFormSubmit");
+		financialAidClaimMutation.mutate(mapToClaim(values));
 	};
 
 	const onSubmit = handleSubmit((values) => {
-		//emit("aaa", true);
+		completeClaimMutation.mutate(mapToClaim(values));
+		resetForm();
 	});
+
+	const mapToClaim = (values: FinancialAidClaim) => {
+		return {
+			citizenship: values.citizenship ?? "",
+			correspondenceAddress: values.correspondenceAddress ?? "",
+			creditsNumbers: values.creditsNumbers ?? 0,
+			dateStatus: values.dateStatus,
+			email: values.email ?? "",
+			immigrationCode: values.immigrationCode ?? "",
+			institutionCode: values.institutionCode ?? "",
+			institutionName: values.institutionName ?? "",
+			language: values.language ?? "",
+			phoneNumber: values.phoneNumber ?? "",
+			programmeCode: values.programmeCode ?? "",
+			secondPhoneNumber: values.secondPhoneNumber ?? "",
+			statusStartingDate: values.statusStartingDate,
+			totalGrossIncome: values.totalGrossIncome ?? 0
+		};
+	};
 </script>
