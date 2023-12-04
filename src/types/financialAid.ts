@@ -1,5 +1,3 @@
-import type { Student } from "./student";
-
 export enum FinancialAidType {
 	Loan = 1,
 	Grant
@@ -53,16 +51,12 @@ export type FinancialAidResponse = {
 	};
 };
 
-export const FinancialAidTypeMap = [
-	
-]
-
 export const FinancialAidMaritalStatusFilter = [
-	"Célibataire ",
+	"Célibataire",
 	"Marié",
 	"Veuf et non remarié",
 	"Divorcé et non remarié",
-	" Marié, mais séparé"
+	"Marié, mais séparé"
 ];
 
 export type FinancialAidMaritalStatus = {

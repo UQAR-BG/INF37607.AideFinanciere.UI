@@ -229,19 +229,6 @@
 		}
 	});
 
-	// const emit = defineEmits([
-	// 	"selectChoice",
-	// 	"UseResquetInWork",
-	// 	"onSecondPartCancel",
-	// 	"onFormSubmit"
-	// ]);
-
-	// let DoesUseResquetInWork;
-
-	// const useResquetInWork = (values: boolean) => {
-	// 	DoesUseResquetInWork = values;
-	// };
-
 	const { studentInfoQuery } = useStudent();
 	const studentInfo = computed(() => studentInfoQuery.data?.value);
 
@@ -252,13 +239,9 @@
 		cancelClaimMutation
 	} = useFinancialAssistance();
 
-	// const onSelectChange = () => {
-	// 	emit("selectChoice", values);
-	// };
-
 	const { values, handleSubmit, errors, resetForm } = useForm({
 		initialValues: props.new
-			? { maritalStatus: "Célibataire " }
+			? { maritalStatus: "Célibataire" }
 			: pendingFinancialAidClaim.value
 	});
 
@@ -294,6 +277,7 @@
 			language: values.language ?? "",
 			phoneNumber: values.phoneNumber ?? "",
 			programmeCode: values.programmeCode ?? "",
+			maritalStatus: values.maritalStatus ?? "",
 			secondPhoneNumber: values.secondPhoneNumber ?? "",
 			statusStartingDate: values.statusStartingDate,
 			totalGrossIncome: values.totalGrossIncome ?? 0

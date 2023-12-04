@@ -110,8 +110,8 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 		return activeFinancialAidClaimsQuery.data?.value.length > 0;
 	});
 
-	const pendingFinancialAidClaim = computed<FinancialAidClaim>(
-		() => activeFinancialAidClaimsQuery.data?.value[0]
+	const pendingFinancialAidClaim = computed<FinancialAidClaim>(() =>
+		activeFinancialAidClaimsQuery.data?.value?.find(() => true)
 	);
 
 	const filterValues = reactive(defaultValues);
