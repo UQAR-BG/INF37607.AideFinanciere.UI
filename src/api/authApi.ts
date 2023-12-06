@@ -1,6 +1,4 @@
-/* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
 import type { LoginResponse, LoginInput } from "@/types/auth/login";
-import type { UserResponse } from "@/types/auth/user";
 import type { SignUpInput, SignupResponse } from "@/types/auth/signup";
 import { useHttp } from "@/composables/useHttp";
 
@@ -26,10 +24,5 @@ export const loginUserFn = async (user: LoginInput) => {
 		"authorization/login",
 		user
 	);
-	return response.data;
-};
-
-export const getMeFn = async () => {
-	const response = await useHttp().httpService.get<UserResponse>("users/me");
 	return response.data;
 };

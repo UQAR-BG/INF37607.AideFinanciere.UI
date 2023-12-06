@@ -1,8 +1,4 @@
-import type {
-	Student,
-	StudentInfoValidateResponse,
-	StudentResponse
-} from "@/types/student";
+import type { Student, StudentInfoValidateResponse } from "@/types/student";
 import { useHttp } from "@/composables/useHttp";
 import type { ValidateStudentInfo } from "~/types/auth/signup";
 

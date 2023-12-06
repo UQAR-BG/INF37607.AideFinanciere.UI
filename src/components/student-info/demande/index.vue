@@ -30,12 +30,4 @@
 		formWasSubmit.value = true;
 		firstPartValidated.value = false;
 	};
-
-	//const emit = defineEmits(["ResquetInWork"]);
-
-	// watch(ResquetInWork, () => {
-	// 	if (ResquetInWork) {
-	// 		emit("ResquetInWork", ResquetInWork);
-	// 	}
-	// });
 </script>

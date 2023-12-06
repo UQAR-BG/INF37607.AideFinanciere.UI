@@ -71,6 +71,11 @@ export const useFinancialAssistance = (codePermanent?: string) => {
 	const completeClaimMutation = useMutation({
 		mutationFn: (claim: FinancialAidClaim) => completeFinancialAidClaim(claim),
 		onSuccess: () => {
+			queryClient.refetchQueries({ queryKey: ["activeClaims"] });
+			queryClient.refetchQueries({ queryKey: ["financialAids"] });
+			toast.success("Demande d'aide financière complétée avec succès", {
+				position: toast.POSITION.TOP_RIGHT
+			});
 			router.push("/dossier");
 		}
 	});

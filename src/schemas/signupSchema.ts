@@ -1,4 +1,7 @@
-/* REGEX: https://stackoverflow.com/questions/20082855/regular-expression-for-canadian-sin-social-insurance-number */
+/*  Tout le crédit de l'idée pour une expression régulière évaluant le numéro d'assurance 
+	social canadien doit être porté à l'utilisateur FiveTools. 
+	Date: 19 novembre 2013,
+	Repéré à https://stackoverflow.com/questions/20082855/regular-expression-for-canadian-sin-social-insurance-number*/
 
 import * as zod from "zod";
 

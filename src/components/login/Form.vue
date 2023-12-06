@@ -35,16 +35,11 @@
 	import { loginSchema } from "@/schemas/loginSchema";
 	import { useAuthStore } from "~/stores/authStore";
 
-	const authStore = useAuthStore();
-
 	const { handleSubmit, errors, resetForm } = useForm({
 		validationSchema: toTypedSchema(loginSchema)
 	});
 
 	const { loginMutation } = useLogin();
-	const { authUserQuery } = useAuth();
-
-	const errorMessage = ref("");
 
 	const onSubmit = handleSubmit((values) => {
 		loginMutation.mutate({
@@ -54,11 +49,4 @@
 
 		resetForm();
 	});
-
-	// onBeforeUpdate(() => {
-	// 	if (authUserQuery.isSuccess.value) {
-	// 		const authUser = Object.assign({}, authUserQuery.data.value?.data.user);
-	// 		authStore.setAuthUser(authUser);
-	// 	}
-	// });
 </script>

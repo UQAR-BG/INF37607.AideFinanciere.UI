@@ -87,7 +87,7 @@
 			/>
 			<InputGroup
 				type="text"
-				label="Langue de correspondancen"
+				label="Langue de correspondance"
 				id="language"
 				:errorMessage="errors.language"
 				:disabled="disabled"

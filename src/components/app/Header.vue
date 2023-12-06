@@ -34,7 +34,6 @@
 	import { useAuthStore } from "@/stores/authStore";
 
 	const store = useAuthStore();
-	const router = useRouter();
 
 	const isSignedIn = computed(() => store.isSignedIn);
 

@@ -13,13 +13,13 @@
 </template>
 
 <script setup lang="ts">
-	import type { SignupStudentInfo } from "@/types/student";
+	import type { SignUpInput } from "~/types/auth/signup";
 
 	const firstPartValidated = ref(false);
 
-	const studentInfo = ref<SignupStudentInfo>({});
+	const studentInfo = ref<SignUpInput>();
 
-	const onFirstPartValidated = (values: SignupStudentInfo) => {
+	const onFirstPartValidated = (values: SignUpInput) => {
 		studentInfo.value = values;
 		firstPartValidated.value = true;
 	};

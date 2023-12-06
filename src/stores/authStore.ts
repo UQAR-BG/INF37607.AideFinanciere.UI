@@ -1,4 +1,7 @@
-/* Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
+/*  Tout le crédit de ce bloc de code doit être porté à l'auteur du blog 
+	Vue.js, Pinia, Vue Query, Axios Interceptors JWT Authentication,
+	Repéré à https://codevoweb.com/pinia-vue-query-axios-jwt-authentication/ */
+
 import type { LoginResponse } from "~/types/auth/login";
 import type { User } from "~/types/auth/user";
 

@@ -1,10 +1,9 @@
 import { loginUserFn } from "@/api/authApi";
 import type { LoginInput, LoginResponse } from "@/types/auth/login";
-import { useMutation, useQueryClient } from "@tanstack/vue-query";
+import { useMutation } from "@tanstack/vue-query";
 import { toast, type ToastOptions } from "vue3-toastify";
 
 export const useLogin = () => {
-	const queryClient = useQueryClient();
 	const router = useRouter();
 	const authStore = useAuthStore();
 
